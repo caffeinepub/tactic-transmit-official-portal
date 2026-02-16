@@ -1,18 +1,25 @@
 import Runtime "mo:core/Runtime";
 import Time "mo:core/Time";
 import Text "mo:core/Text";
+import Iter "mo:core/Iter";
 import Principal "mo:core/Principal";
 import Map "mo:core/Map";
 import MixinAuthorization "authorization/MixinAuthorization";
 import AccessControl "authorization/access-control";
+import MixinStorage "blob-storage/Mixin";
+import Migration "migration";
 
+(with migration = Migration.run)
 actor {
+  include MixinStorage();
+
   // Initialize the user system state
   let accessControlState = AccessControl.initState();
   include MixinAuthorization(accessControlState);
 
   public type UserProfile = {
     name : Text;
+    email : Text;
   };
 
   let userProfiles = Map.empty<Principal, UserProfile>();
@@ -28,6 +35,16 @@ actor {
   };
 
   var contactInfo : Text = "contact@default.com";
+
+  type MessageTerminalEntry = {
+    from : Text;
+    email : Text;
+    message : Text;
+    timestamp : Time.Time;
+  };
+
+  let messageTerminalEntries = Map.empty<Nat, MessageTerminalEntry>();
+  var nextMessageId = messageTerminalEntries.size();
 
   // User profile management functions
   public query ({ caller }) func getCallerUserProfile() : async ?UserProfile {
@@ -79,12 +96,45 @@ actor {
     };
   };
 
-  // Public read functions (no authorization required)
   public query func getDashboardStatus() : async DashboardStatus {
     dashboardStatus;
   };
 
-  public query func getContactInfo() : async Text {
-    contactInfo;
+  public query ({ caller }) func getContactInfo() : async Text {
+    if (not (AccessControl.hasPermission(accessControlState, caller, #user))) {
+      Runtime.trap("Unauthorized: Must be authenticated with Internet Identity to access Founders' Vault");
+    };
+
+    switch (userProfiles.get(caller)) {
+      case null {
+        Runtime.trap("Unauthorized: Must have a complete user profile (name and email) to access Founders' Vault");
+      };
+      case (?profile) {
+        // Verify profile has both name and email (not empty)!
+        if (profile.name.size() == 0 or profile.email.size() == 0) {
+          Runtime.trap("Unauthorized: User profile must include both name and email address to access Founders' Vault");
+        };
+        contactInfo;
+      };
+    };
+  };
+
+  // Message Terminal functions
+  public func submitMessageTerminalEntry(from : Text, email : Text, message : Text) : async () {
+    let entry : MessageTerminalEntry = {
+      from;
+      email;
+      message;
+      timestamp = Time.now();
+    };
+    messageTerminalEntries.add(nextMessageId, entry);
+    nextMessageId += 1;
+  };
+
+  public query ({ caller }) func getAllMessageTerminalEntries() : async [MessageTerminalEntry] {
+    if (not (AccessControl.isAdmin(accessControlState, caller))) {
+      Runtime.trap("Unauthorized: Only admins can retrieve message terminal entries");
+    };
+    messageTerminalEntries.values().toArray();
   };
 };

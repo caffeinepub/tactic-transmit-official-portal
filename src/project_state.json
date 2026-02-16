@@ -1,14 +1,20 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 7,
-  "summary": "Build the TACTIC TRANSMIT official portal website with a deep-tech glassmorphism visual style, product showcase for the TT-1 transmitter, executive board section, and an admin login gateway leading to a status dashboard (uptime/NTP), plus legal pages and system operational indicator.",
+  "projectStateVersion": 9,
+  "summary": "Shift to a full rebuild of the TACTIC TRANSMIT Official Portal based on the provided multi-page deep-dive blueprint: interactive particle-reactive dark UI, enhanced Home/Product/Board/Connect/Legal pages with gated secure contact access, automated welcome email on registration, and expanded technical/safety documentation content.",
   "architectural_notes": [
     "Portal uses a deep-tech glassmorphism UI style with dark gradient background and animated/pulsing status indicators.",
     "Admin access requires authentication before displaying operational metrics (uptime, NTP status).",
-    "Typography: use Orbitron and JetBrains Mono as the primary site fonts."
+    "Typography: use Orbitron and JetBrains Mono as the primary site fonts.",
+    "Project direction: full rebuild to implement the provided deep-dive multi-page blueprint, overwriting existing page structures/content.",
+    "Connect & Support includes two zones: public contact form plus an authenticated secure-contact vault that reveals founder contact info after login.",
+    "Automated transactional email should be sent upon successful user registration to grant Tier 1 access to secure contact registry/docs."
   ],
-  "known_issues": [],
-  "isFixRequest": true,
+  "known_issues": [
+    "Potential scope/auth conflict: existing requirement uses Internet Identity for authentication, but blueprint specifies a custom Name/Email/Password signup/login for gated secure contacts—requires reconciliation/decision."
+  ],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Mouse-reactive particle background texture (tt-particles-bg.dim_1920x1080.png)\n- 3D circular TT logo hero render (tt-logo-3d-hero.dim_1600x1600.png)\n- Blueprint/schematic background for product page (tt1-blueprint-bg.dim_1920x1080.png)\n- Macro photo of ESP32-WROOM-32 chip with glowing pinouts (tt1-macro-esp32.dim_1400x900.png)\n- Macro photo of DS3231 RTC module showing crystal oscillator and backup battery (tt1-macro-ds3231.dim_1400x900.png)\n- Macro photo of DFPlayer Mini module highlighting SD card slot and audio chip (tt1-macro-dfplayer.dim_1400x900.png)\n- Macro photo of PCB traces and protection resistors (tt1-macro-protection.dim_1400x900.png)\n- Studio headshot portrait of Johann G. Thekkel (board-johann.dim_800x1000.png)\n- Studio headshot portrait of Joel Abraham (board-joel.dim_800x1000.png)\n- Studio headshot portrait of Dejon Justine (board-dejon.dim_800x1000.png)\n- Studio headshot portrait of Nandhukrishna Biju (board-nandhu.dim_800x1000.png)\n- Signature-style handwritten name for Johann (sig-johann.dim_600x200.png)\n- Signature-style handwritten name for Dejon (sig-dejon.dim_600x200.png)",
   "existing_features": [
     {
       "id": "feature-create-a-public-marketing-landing-page-for-tactic-transmit-that-follows-the-specified-deep-tech-visual-identity-dark-charcoal-to-navy-gradient-background-glassmorphism-blurred-semi-transparent-panels-neon-blue-accent-pulses-and-a-circular-tt-logo-in-the-header-that-softly-pulses-to-indicate-system-vitality",
@@ -97,6 +103,110 @@
         "REQ-12"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-restructure-the-public-portal-from-a-single-long-landing-page-into-the-blueprint-s-interconnected-multi-page-site-home-product-deep-dive-board-connect-support-and-legal-technical-docs-while-keeping-the-existing-admin-dashboard-route-operational",
+      "title": "Restructure the public portal from a single long landing page into the blueprint’s interconnected multi-page site: Home, Product Deep-Dive, Board, Connect & Support, and Legal & Technical Docs, while keeping the existing Admin Dashboard route operational.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-rebuild-the-home-page-the-pulse-to-match-the-blueprint-content-and-interactions-a-high-contrast-dark-mode-experience-with-a-mouse-reactive-particle-background-layer-a-cinematic-3d-circular-tt-logo-render-that-pulses-in-sync-with-an-on-screen-digital-clock-the-hook-headline-exactly-precision-automated-synchronized-a-welcome-narrative-section-with-the-provided-text-and-attribution-and-a-core-value-grid-containing-the-three-specified-items",
+      "title": "Rebuild the Home page (The Pulse) to match the blueprint content and interactions: a high-contrast dark mode experience with a mouse-reactive particle background layer; a cinematic 3D circular TT logo render that pulses in sync with an on-screen digital clock; the Hook headline exactly “PRECISION. AUTOMATED. SYNCHRONIZED.”; a Welcome Narrative section with the provided text and attribution; and a Core Value grid containing the three specified items.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-dedicated-product-deep-dive-page-the-tt-1-transmitter-with-a-technical-schematic-blueprint-visual-style-and-four-component-modules-each-showing-a-high-resolution-macro-image-and-the-exact-technical-description-text-provided-for-esp32-wroom-32-ds3231-high-precision-rtc-dfplayer-mini-fn-m16p-24-bit-dac-and-1k-impedance-matching-resistors",
+      "title": "Create a dedicated Product Deep-Dive page (The TT-1 Transmitter) with a technical schematic/blueprint visual style and four component modules, each showing a high-resolution macro image and the exact technical description text provided for: ESP32-WROOM-32, DS3231 High-Precision RTC, DFPlayer Mini (FN-M16P) + 24-bit DAC, and 1kΩ Impedance Matching Resistors.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-dedicated-board-page-executive-leadership-with-glassmorphism-cards-and-clean-studio-style-headshots-for-the-four-founders-using-the-exact-names-roles-and-descriptions-provided-in-the-blueprint",
+      "title": "Create a dedicated Board page (Executive Leadership) with glassmorphism cards and clean studio-style headshots for the four founders, using the exact names, roles, and descriptions provided in the blueprint.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-dedicated-connect-support-page-split-into-two-zones-a-a-public-messaging-terminal-contact-form-with-fields-name-email-address-required-and-message-and-b-a-secure-founders-vault-area-that-is-gated-behind-internet-identity-authentication-and-profile-completion",
+      "title": "Create a dedicated Connect & Support page split into two zones: (A) a public “Messaging Terminal” contact form with fields Name, Email Address (required), and Message; and (B) a secure “Founders’ Vault” area that is gated behind Internet Identity authentication and profile completion.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-backend-persistence-and-admin-access-for-messaging-terminal-submissions-so-that-submitting-the-public-contact-form-stores-the-message-in-the-backend-and-authenticated-admins-can-retrieve-a-list-of-submissions-for-follow-up-no-external-email-delivery-required",
+      "title": "Implement backend persistence and admin access for “Messaging Terminal” submissions so that submitting the public contact form stores the message in the backend, and authenticated admins can retrieve a list of submissions for follow-up (no external email delivery required).",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-blueprint-s-custom-name-email-password-signup-login-with-internet-identity-based-sign-up-login-semantics-require-internet-identity-authentication-plus-a-stored-user-profile-that-includes-name-and-email-address-to-unlock-the-founders-vault-secure-contact-details",
+      "title": "Replace the blueprint’s custom Name/Email/Password signup/login with Internet Identity-based “Sign up / Login” semantics: require Internet Identity authentication plus a stored user profile that includes Name and Email Address to unlock the Founders’ Vault secure contact details.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-after-successful-secure-access-registration-unlock-present-the-provided-automated-network-access-email-content-as-an-in-app-confirmation-screen-modal-that-the-user-can-copy-subject-body-since-external-email-sending-is-not-part-of-this-build",
+      "title": "After successful secure access registration/unlock, present the provided “Automated Network Access Email” content as an in-app confirmation screen/modal that the user can copy (subject + body), since external email sending is not part of this build.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-founders-vault-unlock-view-to-reveal-the-exact-secure-contact-details-after-authentication-official-phone-91-7356824245-official-email-tactic-transmit-gmail-com-instagram-tactic-transmit",
+      "title": "Implement the Founders’ Vault “Unlock” view to reveal the exact secure contact details after authentication: Official Phone +91 7356824245, Official Email tactic.transmit@gmail.com, Instagram @tactic_transmit.",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-legal-technical-docs-area-that-includes-1-an-updated-terms-of-service-section-explicitly-defining-the-ip-ownership-of-the-four-founders-and-2-a-safety-audit-document-page-section-presented-as-a-signed-document-by-dejon-and-johann",
+      "title": "Create a Legal & Technical Docs area that includes (1) an updated Terms of Service section explicitly defining the IP ownership of the four founders, and (2) a Safety Audit document page/section presented as a signed document by Dejon and Johann.",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-global-navigation-to-match-the-blueprint-s-footer-navigation-intent-include-clear-links-for-home-product-board-and-login-connect-and-keep-terms-privacy-accessible-from-the-footer-even-if-not-in-the-primary-nav",
+      "title": "Update global navigation to match the blueprint’s footer navigation intent: include clear links for Home, Product, Board, and Login/Connect, and keep Terms/Privacy accessible from the footer (even if not in the primary nav).",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-explicit-logout-controls-in-the-public-portal-navigation-and-or-connect-area-so-an-authenticated-user-can-clear-the-internet-identity-session-and-return-to-home",
+      "title": "Add explicit logout controls in the public portal navigation and/or Connect area so an authenticated user can clear the Internet Identity session and return to Home.",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-home-page-contact-details-in-a-public-section-display-the-email-tactic-transmit-gmail-com-and-instagram-handle-tactic-transmit",
+      "title": "Add Home page contact details in a public section: display the email tactic.transmit@gmail.com and Instagram handle @tactic_transmit.",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -177,6 +287,54 @@
     {
       "id": "AR-19",
       "summary": "Add Contact details on the Home page including email (tactic.transmit@gmail.com) and Instagram (@tactic_transmit)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Full rebuild: replace existing portal pages and content with the provided deep-dive blueprint across Home, Product Deep-Dive, Board, Connect & Support, and Legal/Docs (interconnected multi-page structure)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-21",
+      "summary": "Home page upgrades: mouse-reactive particle background, cinematic 3D pulsing TT logo synced with a digital clock element, add Hook headline and Welcome Narrative content, add Core Value grid (High Fidelity/Zero Drift/Safety First)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-22",
+      "summary": "Product Deep-Dive page: technical schematic/blueprint visual style background; add component modules with high-res macro photos and detailed technical descriptions for ESP32-WROOM-32, DS3231 RTC, DFPlayer Mini + 24-bit DAC, and 1kΩ protection stage",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-23",
+      "summary": "Connect & Support page: implement public Messaging Terminal contact form (Name, required Email, Message) with routing logic to the team while preserving internal privacy",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-24",
+      "summary": "Secure 'Founders’ Vault': implement signup/login (Name/Email/Password) and gate secure contact details until authenticated; after login reveal phone/email/Instagram",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-25",
+      "summary": "Automated 'Network Access' welcome email triggered upon user registration for secure access (use provided subject/body and include verified founder contact lines)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-26",
+      "summary": "Legal & Technical Docs: add/expand Terms of Service (IP ownership for the four founders) and add a Safety Audit document page/section signed by Dejon and Johann",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-27",
+      "summary": "Global footer navigation update to match blueprint: links for Home, Product, Board, Login",
       "reqIds": [],
       "status": "pending"
     }

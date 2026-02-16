@@ -1,23 +1,121 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-16T14:50:20.390Z",
-  "summary": "REQ-12 appears implemented by updating the HeroSection <h1> styling to use responsive font sizes and safe wrapping (break-words, hyphens-auto) while keeping the headline text unchanged. However, the diff also modifies non-requested metadata/summary files, which goes beyond the constraint to apply changes only to the selected element.",
-  "missing_requirements": [],
-  "hallucinated_features": [
+  "generatedAt": "2026-02-16T17:00:57.877Z",
+  "summary": "Diff implements a new multi-page routed portal with Home/Product/Board/Connect/Legal pages, adds Messaging Terminal submission hooks, Founders’ Vault gating via Internet Identity + profile (name+email), a logout control, and Legal/IP + Safety Audit content. However, several blueprint requirements that demand exact English text/labels and certain gating/UX details are not evidenced (or appear to differ), and there are unrequested additions (notably a new backend file and footer attribution).",
+  "missing_requirements": [
     {
-      "description": "Modified non-requested project metadata/summary files (frontend-file-summaries.txt, project_state.json) despite the constraint to apply changes ONLY to the selected Hero <h1> element.",
-      "reason": "BuildRequest explicitly constrained changes to only the selected Hero headline element; updating repository summary/state files was not requested as part of REQ-12.",
+      "id": "REQ-17",
+      "requirement": "Founders’ Vault includes a button labeled exactly “Access Secure Contact Details”, and when unauthenticated displays exactly: “Sign up to unlock the Tactic Transmit direct contact line.”",
+      "reason": "The FoundersVault component is truncated in the diff summary; the required exact CTA label and exact unauthenticated gating message are not visible in the provided evidence.",
       "evidence": [
-        "frontend-file-summaries.txt",
-        "project_state.json"
+        "frontend/src/components/connect/FoundersVault.tsx (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "requirement": "Show the full provided “Automated Network Access Email” subject + body text exactly, with a “Copy” action, and do not claim an email was actually sent.",
+      "reason": "The modal includes a custom subject/body that likely does not match the blueprint exactly, uses a “Copy Email” button label (not evidenced as exactly “Copy”), and includes wording that implies an email was received/sent (e.g., “You are receiving this email…”).",
+      "evidence": [
+        "frontend/src/components/connect/AccessGrantedEmailModal.tsx"
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "requirement": "Welcome Narrative section includes the exact quoted narrative sentence and credits Nandhukrishna Biju; Core Value grid labels and descriptions exactly as provided (High Fidelity / Zero Drift / Safety First).",
+      "reason": "The narrative sentence and the core value descriptions are present but cannot be confirmed to match the blueprint text exactly from the diff summary; the descriptions shown are short phrases that may differ from the required exact copy.",
+      "evidence": [
+        "frontend/src/components/landing/WelcomeNarrativeSection.tsx",
+        "frontend/src/components/landing/CoreValuesGrid.tsx"
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "requirement": "Each of the four Product Deep-Dive component sections must include the exact technical description text provided in the blueprint (including special characters like Xtensa® and 1kΩ).",
+      "reason": "The page has four components and includes Xtensa® and 1kΩ, but the descriptions shown cannot be verified as the exact blueprint-provided text (they appear custom/extended).",
+      "evidence": [
+        "frontend/src/pages/ProductDeepDivePage.tsx (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "requirement": "Board page uses the exact names, roles, and one-sentence descriptions provided in the blueprint.",
+      "reason": "Names match, but roles/descriptions shown cannot be verified as exactly matching the blueprint wording (e.g., role strings like “Lead Architect & Lead Code”).",
+      "evidence": [
+        "frontend/src/pages/BoardPage.tsx"
+      ]
+    },
+    {
+      "id": "REQ-18",
+      "requirement": "Backend exposes an admin-only query to list submitted messages and prevents non-admin callers from reading the stored messages list.",
+      "reason": "Frontend hook calls `getAllMessageTerminalEntries()`, but the backend implementation for listing entries and its admin-only authorization is not visible in the truncated `backend/main.mo` excerpt.",
+      "evidence": [
+        "frontend/src/hooks/useMessageTerminal.ts",
+        "backend/main.mo (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-23",
+      "requirement": "Header navigation includes links for Home, Product, Board, and Login/Connect.",
+      "reason": "Header contains Home/Product/Board/Connect, but there is no evidence of a distinct “Login/Connect” link/label in the header (only “Connect”).",
+      "evidence": [
+        "frontend/src/components/layout/Header.tsx (truncated)"
       ]
     }
   ],
-  "confidence": 0.78,
+  "hallucinated_features": [
+    {
+      "description": "Added separate backend module file `backend/migration.mo` containing state migration logic.",
+      "reason": "BuildRequest constraint requires keeping all Motoko backend logic in the single actor file `backend/main.mo` (single-actor architecture). Adding this additional backend file appears to violate that constraint and was not requested as a feature.",
+      "evidence": [
+        "backend/migration.mo"
+      ]
+    },
+    {
+      "description": "Footer includes a “Built with … caffeine.ai” attribution block and outbound link.",
+      "reason": "Not requested in the blueprint requirements and adds extra user-facing text/branding beyond the specified navigation intent.",
+      "evidence": [
+        "frontend/src/components/layout/Footer.tsx"
+      ]
+    },
+    {
+      "description": "Messaging Terminal success state says “We’ve received your message and will respond via email soon.”",
+      "reason": "While responding via email is plausible operationally, the BuildRequest explicitly disallows external email delivery implementation and requires user-facing text to match the blueprint exactly where specified; this extra promise is not requested and could be misleading.",
+      "evidence": [
+        "frontend/src/components/connect/MessagingTerminalForm.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.62,
   "changed_files": [
+    "backend/main.mo",
+    "backend/migration.mo",
     "frontend-file-summaries.txt",
+    "frontend/src/App.tsx",
+    "frontend/src/components/auth/ProfileSetupModal.tsx",
+    "frontend/src/components/connect/AccessGrantedEmailModal.tsx",
+    "frontend/src/components/connect/FoundersVault.tsx",
+    "frontend/src/components/connect/MessagingTerminalForm.tsx",
+    "frontend/src/components/landing/CircuitryPulseBackground.tsx",
+    "frontend/src/components/landing/ConnectGatewaySection.tsx",
+    "frontend/src/components/landing/CoreValuesGrid.tsx",
+    "frontend/src/components/landing/DigitalClock.tsx",
+    "frontend/src/components/landing/ExecutiveBoardSection.tsx",
     "frontend/src/components/landing/HeroSection.tsx",
+    "frontend/src/components/landing/ParticleBackground.tsx",
+    "frontend/src/components/landing/ProductSection.tsx",
+    "frontend/src/components/landing/PublicContactSection.tsx",
+    "frontend/src/components/landing/WelcomeNarrativeSection.tsx",
+    "frontend/src/components/layout/Footer.tsx",
+    "frontend/src/components/layout/Header.tsx",
+    "frontend/src/hooks/useMessageTerminal.ts",
+    "frontend/src/index.css",
+    "frontend/src/pages/BoardPage.tsx",
+    "frontend/src/pages/ConnectSupportPage.tsx",
+    "frontend/src/pages/LandingPage.tsx",
+    "frontend/src/pages/LegalTechnicalDocsPage.tsx",
+    "frontend/src/pages/ProductDeepDivePage.tsx",
+    "frontend/src/pages/TermsOfServicePage.tsx",
     "project_state.json"
   ]
 }

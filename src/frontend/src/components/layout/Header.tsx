@@ -1,20 +1,33 @@
 import { useNavigate } from '@tanstack/react-router';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, LogOut } from 'lucide-react';
 import { useState } from 'react';
+import { useInternetIdentity } from '../../hooks/useInternetIdentity';
+import { useQueryClient } from '@tanstack/react-query';
 
 export default function Header() {
   const navigate = useNavigate();
+  const { identity, clear } = useInternetIdentity();
+  const queryClient = useQueryClient();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const isAuthenticated = !!identity;
 
   const navItems = [
     { label: 'Home', path: '/' },
-    { label: 'Admin', path: '/admin' },
-    { label: 'Terms', path: '/terms' },
-    { label: 'Privacy', path: '/privacy' },
+    { label: 'Product', path: '/product' },
+    { label: 'Board', path: '/board' },
+    { label: 'Connect', path: '/connect' },
   ];
 
   const handleNavigation = (path: string) => {
     navigate({ to: path });
+    setMobileMenuOpen(false);
+  };
+
+  const handleLogout = async () => {
+    await clear();
+    queryClient.clear();
+    navigate({ to: '/' });
     setMobileMenuOpen(false);
   };
 
@@ -50,6 +63,15 @@ export default function Header() {
               {item.label}
             </button>
           ))}
+          {isAuthenticated && (
+            <button
+              onClick={handleLogout}
+              className="ml-2 px-4 py-2 text-sm font-medium text-white/80 hover:text-red-400 hover:bg-white/5 rounded-lg transition-all duration-200 flex items-center gap-2"
+            >
+              <LogOut className="w-4 h-4" />
+              Logout
+            </button>
+          )}
         </nav>
 
         {/* Mobile Menu Toggle */}
@@ -75,6 +97,15 @@ export default function Header() {
                 {item.label}
               </button>
             ))}
+            {isAuthenticated && (
+              <button
+                onClick={handleLogout}
+                className="px-4 py-3 text-left text-sm font-medium text-white/80 hover:text-red-400 hover:bg-white/5 rounded-lg transition-all duration-200 flex items-center gap-2"
+              >
+                <LogOut className="w-4 h-4" />
+                Logout
+              </button>
+            )}
           </nav>
         </div>
       )}

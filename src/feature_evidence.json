@@ -2,10 +2,16 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-only-the-selected-hero-headline-element-xpath-html-1-body-1-div-1-div-1-main-1-div-1-section-1-div-1-div-1-h1-1-so-the-h1-text-is-visually-contained-within-its-glass-panel-on-all-screen-sizes-no-overflow-cropping-by-making-the-typography-responsive-and-allowing-safe-wrapping-within-the-box-while-keeping-the-existing-headline-text-unchanged",
-      "featureTitle": "Update only the selected Hero headline element (XPath: /html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[1]/div[1]/div[1]/h1[1]) so the H1 text is visually contained within its glass panel on all screen sizes (no overflow/cropping), by making the typography responsive and allowing safe wrapping within the box while keeping the existing headline text unchanged.",
+      "featureId": "feature-restructure-the-public-portal-from-a-single-long-landing-page-into-the-blueprint-s-interconnected-multi-page-site-home-product-deep-dive-board-connect-support-and-legal-technical-docs-while-keeping-the-existing-admin-dashboard-route-operational",
+      "featureTitle": "Restructure the public portal from a single long landing page into the blueprint’s interconnected multi-page site: Home, Product Deep-Dive, Board, Connect & Support, and Legal & Technical Docs, while keeping the existing Admin Dashboard route operational.",
       "files": [
-        "frontend/src/components/landing/HeroSection.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/components/layout/Footer.tsx",
+        "frontend/src/components/layout/Header.tsx",
+        "frontend/src/pages/BoardPage.tsx",
+        "frontend/src/pages/ConnectSupportPage.tsx",
+        "frontend/src/pages/LegalTechnicalDocsPage.tsx",
+        "frontend/src/pages/ProductDeepDivePage.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -13,10 +19,271 @@
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
       ],
       "testIds": [
-        "REQ-12"
+        "REQ-13"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-rebuild-the-home-page-the-pulse-to-match-the-blueprint-content-and-interactions-a-high-contrast-dark-mode-experience-with-a-mouse-reactive-particle-background-layer-a-cinematic-3d-circular-tt-logo-render-that-pulses-in-sync-with-an-on-screen-digital-clock-the-hook-headline-exactly-precision-automated-synchronized-a-welcome-narrative-section-with-the-provided-text-and-attribution-and-a-core-value-grid-containing-the-three-specified-items",
+      "featureTitle": "Rebuild the Home page (The Pulse) to match the blueprint content and interactions: a high-contrast dark mode experience with a mouse-reactive particle background layer; a cinematic 3D circular TT logo render that pulses in sync with an on-screen digital clock; the Hook headline exactly “PRECISION. AUTOMATED. SYNCHRONIZED.”; a Welcome Narrative section with the provided text and attribution; and a Core Value grid containing the three specified items.",
+      "files": [
+        "frontend/src/components/landing/CoreValuesGrid.tsx",
+        "frontend/src/components/landing/DigitalClock.tsx",
+        "frontend/src/components/landing/HeroSection.tsx",
+        "frontend/src/components/landing/ParticleBackground.tsx",
+        "frontend/src/components/landing/WelcomeNarrativeSection.tsx",
+        "frontend/src/index.css",
+        "frontend/src/pages/LandingPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-14"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-dedicated-product-deep-dive-page-the-tt-1-transmitter-with-a-technical-schematic-blueprint-visual-style-and-four-component-modules-each-showing-a-high-resolution-macro-image-and-the-exact-technical-description-text-provided-for-esp32-wroom-32-ds3231-high-precision-rtc-dfplayer-mini-fn-m16p-24-bit-dac-and-1k-impedance-matching-resistors",
+      "featureTitle": "Create a dedicated Product Deep-Dive page (The TT-1 Transmitter) with a technical schematic/blueprint visual style and four component modules, each showing a high-resolution macro image and the exact technical description text provided for: ESP32-WROOM-32, DS3231 High-Precision RTC, DFPlayer Mini (FN-M16P) + 24-bit DAC, and 1kΩ Impedance Matching Resistors.",
+      "files": [
+        "frontend/src/components/layout/Header.tsx",
+        "frontend/src/pages/ProductDeepDivePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-15"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-dedicated-board-page-executive-leadership-with-glassmorphism-cards-and-clean-studio-style-headshots-for-the-four-founders-using-the-exact-names-roles-and-descriptions-provided-in-the-blueprint",
+      "featureTitle": "Create a dedicated Board page (Executive Leadership) with glassmorphism cards and clean studio-style headshots for the four founders, using the exact names, roles, and descriptions provided in the blueprint.",
+      "files": [
+        "frontend/src/components/layout/Header.tsx",
+        "frontend/src/pages/BoardPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-16"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-dedicated-connect-support-page-split-into-two-zones-a-a-public-messaging-terminal-contact-form-with-fields-name-email-address-required-and-message-and-b-a-secure-founders-vault-area-that-is-gated-behind-internet-identity-authentication-and-profile-completion",
+      "featureTitle": "Create a dedicated Connect & Support page split into two zones: (A) a public “Messaging Terminal” contact form with fields Name, Email Address (required), and Message; and (B) a secure “Founders’ Vault” area that is gated behind Internet Identity authentication and profile completion.",
+      "files": [
+        "frontend/src/components/connect/FoundersVault.tsx",
+        "frontend/src/components/connect/MessagingTerminalForm.tsx",
+        "frontend/src/components/layout/Header.tsx",
+        "frontend/src/pages/ConnectSupportPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-17"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-backend-persistence-and-admin-access-for-messaging-terminal-submissions-so-that-submitting-the-public-contact-form-stores-the-message-in-the-backend-and-authenticated-admins-can-retrieve-a-list-of-submissions-for-follow-up-no-external-email-delivery-required",
+      "featureTitle": "Implement backend persistence and admin access for “Messaging Terminal” submissions so that submitting the public contact form stores the message in the backend, and authenticated admins can retrieve a list of submissions for follow-up (no external email delivery required).",
+      "files": [
+        "frontend/src/components/connect/MessagingTerminalForm.tsx",
+        "frontend/src/hooks/useMessageTerminal.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-18"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-replace-the-blueprint-s-custom-name-email-password-signup-login-with-internet-identity-based-sign-up-login-semantics-require-internet-identity-authentication-plus-a-stored-user-profile-that-includes-name-and-email-address-to-unlock-the-founders-vault-secure-contact-details",
+      "featureTitle": "Replace the blueprint’s custom Name/Email/Password signup/login with Internet Identity-based “Sign up / Login” semantics: require Internet Identity authentication plus a stored user profile that includes Name and Email Address to unlock the Founders’ Vault secure contact details.",
+      "files": [
+        "frontend/src/components/auth/ProfileSetupModal.tsx",
+        "frontend/src/components/connect/FoundersVault.tsx",
+        "frontend/src/components/landing/ConnectGatewaySection.tsx",
+        "frontend/src/components/layout/Header.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-19"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-after-successful-secure-access-registration-unlock-present-the-provided-automated-network-access-email-content-as-an-in-app-confirmation-screen-modal-that-the-user-can-copy-subject-body-since-external-email-sending-is-not-part-of-this-build",
+      "featureTitle": "After successful secure access registration/unlock, present the provided “Automated Network Access Email” content as an in-app confirmation screen/modal that the user can copy (subject + body), since external email sending is not part of this build.",
+      "files": [
+        "frontend/src/components/connect/AccessGrantedEmailModal.tsx",
+        "frontend/src/components/connect/FoundersVault.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-20"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-the-founders-vault-unlock-view-to-reveal-the-exact-secure-contact-details-after-authentication-official-phone-91-7356824245-official-email-tactic-transmit-gmail-com-instagram-tactic-transmit",
+      "featureTitle": "Implement the Founders’ Vault “Unlock” view to reveal the exact secure contact details after authentication: Official Phone +91 7356824245, Official Email tactic.transmit@gmail.com, Instagram @tactic_transmit.",
+      "files": [
+        "frontend/src/components/connect/FoundersVault.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-21"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-legal-technical-docs-area-that-includes-1-an-updated-terms-of-service-section-explicitly-defining-the-ip-ownership-of-the-four-founders-and-2-a-safety-audit-document-page-section-presented-as-a-signed-document-by-dejon-and-johann",
+      "featureTitle": "Create a Legal & Technical Docs area that includes (1) an updated Terms of Service section explicitly defining the IP ownership of the four founders, and (2) a Safety Audit document page/section presented as a signed document by Dejon and Johann.",
+      "files": [
+        "frontend/src/components/layout/Header.tsx",
+        "frontend/src/pages/LegalTechnicalDocsPage.tsx",
+        "frontend/src/pages/TermsOfServicePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-22"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-global-navigation-to-match-the-blueprint-s-footer-navigation-intent-include-clear-links-for-home-product-board-and-login-connect-and-keep-terms-privacy-accessible-from-the-footer-even-if-not-in-the-primary-nav",
+      "featureTitle": "Update global navigation to match the blueprint’s footer navigation intent: include clear links for Home, Product, Board, and Login/Connect, and keep Terms/Privacy accessible from the footer (even if not in the primary nav).",
+      "files": [
+        "frontend/src/components/layout/Footer.tsx",
+        "frontend/src/components/layout/Header.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-23"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-explicit-logout-controls-in-the-public-portal-navigation-and-or-connect-area-so-an-authenticated-user-can-clear-the-internet-identity-session-and-return-to-home",
+      "featureTitle": "Add explicit logout controls in the public portal navigation and/or Connect area so an authenticated user can clear the Internet Identity session and return to Home.",
+      "files": [
+        "frontend/src/components/connect/FoundersVault.tsx",
+        "frontend/src/components/layout/Header.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-24"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-home-page-contact-details-in-a-public-section-display-the-email-tactic-transmit-gmail-com-and-instagram-handle-tactic-transmit",
+      "featureTitle": "Add Home page contact details in a public section: display the email tactic.transmit@gmail.com and Instagram handle @tactic_transmit.",
+      "files": [
+        "frontend/src/pages/LandingPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-25"
       ],
       "confidence": "high"
     }

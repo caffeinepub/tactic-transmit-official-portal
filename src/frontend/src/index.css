@@ -117,6 +117,26 @@
     .pulse-logo {
         animation: pulse-logo 3s ease-in-out infinite;
     }
+
+    /* Clock-synced pulse for hero logo */
+    @keyframes pulse-sync {
+        0% {
+            transform: scale(1);
+            filter: drop-shadow(0 0 10px oklch(var(--neon-blue) / 0.5));
+        }
+        15% {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 25px oklch(var(--neon-blue) / 0.9));
+        }
+        30% {
+            transform: scale(1);
+            filter: drop-shadow(0 0 10px oklch(var(--neon-blue) / 0.5));
+        }
+        100% {
+            transform: scale(1);
+            filter: drop-shadow(0 0 10px oklch(var(--neon-blue) / 0.5));
+        }
+    }
 }
 
 @keyframes pulse-logo {

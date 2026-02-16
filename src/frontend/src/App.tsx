@@ -1,6 +1,9 @@
 import { createRouter, createRoute, createRootRoute, RouterProvider, Outlet } from '@tanstack/react-router';
-import { useInternetIdentity } from './hooks/useInternetIdentity';
 import LandingPage from './pages/LandingPage';
+import ProductDeepDivePage from './pages/ProductDeepDivePage';
+import BoardPage from './pages/BoardPage';
+import ConnectSupportPage from './pages/ConnectSupportPage';
+import LegalTechnicalDocsPage from './pages/LegalTechnicalDocsPage';
 import AdminDashboardPage from './pages/AdminDashboardPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
@@ -20,6 +23,30 @@ const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/',
   component: LandingPage,
+});
+
+const productRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/product',
+  component: ProductDeepDivePage,
+});
+
+const boardRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/board',
+  component: BoardPage,
+});
+
+const connectRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/connect',
+  component: ConnectSupportPage,
+});
+
+const legalRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/legal',
+  component: LegalTechnicalDocsPage,
 });
 
 const adminRoute = createRoute({
@@ -46,7 +73,16 @@ const privacyRoute = createRoute({
   component: PrivacyPolicyPage,
 });
 
-const routeTree = rootRoute.addChildren([indexRoute, adminRoute, termsRoute, privacyRoute]);
+const routeTree = rootRoute.addChildren([
+  indexRoute,
+  productRoute,
+  boardRoute,
+  connectRoute,
+  legalRoute,
+  adminRoute,
+  termsRoute,
+  privacyRoute,
+]);
 
 const router = createRouter({ routeTree });
 
