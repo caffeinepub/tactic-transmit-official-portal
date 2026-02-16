@@ -1,292 +1,49 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-16T17:00:57.883Z",
+  "generatedAt": "2026-02-16T17:48:42.790Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 13,
-    "implemented": 13,
+    "total": 2,
+    "implemented": 1,
     "items": [
       {
-        "id": "REQ-13",
-        "summary": "Restructure the public portal from a single long landing page into the blueprint’s interconnected multi-page site: Home, Product Deep-Dive, Board, Connect & Support, and Legal & Technical Docs, while keeping the existing Admin Dashboard route operational.",
+        "id": "REQ-28",
+        "summary": "Add the newly uploaded logo image file (SmartSelect_20260214-130511_WhatsApp-1.jpg) to the frontend static assets under frontend/public/assets/generated and treat it as the single source-of-truth logo asset.",
+        "status": "missing",
+        "plannedFiles": [
+          "frontend/public/assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg"
+        ],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-29",
+        "summary": "Update the public portal UI to use only /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg anywhere a TT/Tactic Transmit logo is rendered (including the fixed header brand mark and the Home hero logo), removing references to any other logo image filenames currently used.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/App.tsx",
-          "frontend/src/pages/ProductDeepDivePage.tsx",
-          "frontend/src/pages/BoardPage.tsx",
-          "frontend/src/pages/ConnectSupportPage.tsx",
-          "frontend/src/pages/LegalTechnicalDocsPage.tsx",
+          "frontend/src/constants/brand.ts",
           "frontend/src/components/layout/Header.tsx",
-          "frontend/src/components/layout/Footer.tsx"
+          "frontend/src/components/landing/HeroSection.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/App.tsx",
-          "frontend/src/pages/ProductDeepDivePage.tsx",
-          "frontend/src/pages/BoardPage.tsx",
-          "frontend/src/pages/ConnectSupportPage.tsx",
-          "frontend/src/pages/LegalTechnicalDocsPage.tsx",
+          "frontend/src/constants/brand.ts",
           "frontend/src/components/layout/Header.tsx",
-          "frontend/src/components/layout/Footer.tsx"
-        ]
-      },
-      {
-        "id": "REQ-14",
-        "summary": "Rebuild the Home page (The Pulse) to match the blueprint content and interactions: a high-contrast dark mode experience with a mouse-reactive particle background layer; a cinematic 3D circular TT logo render that pulses in sync with an on-screen digital clock; the Hook headline exactly “PRECISION. AUTOMATED. SYNCHRONIZED.”; a Welcome Narrative section with the provided text and attribution; and a Core Value grid containing the three specified items.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/LandingPage.tsx",
-          "frontend/src/components/landing/HeroSection.tsx",
-          "frontend/src/components/landing/ParticleBackground.tsx",
-          "frontend/src/components/landing/DigitalClock.tsx",
-          "frontend/src/components/landing/WelcomeNarrativeSection.tsx",
-          "frontend/src/components/landing/CoreValuesGrid.tsx",
-          "frontend/src/index.css",
-          "frontend/public/assets/generated/tt-particles-bg.dim_1920x1080.png",
-          "frontend/public/assets/generated/tt-logo-3d-hero.dim_1600x1600.png"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/LandingPage.tsx",
-          "frontend/src/components/landing/HeroSection.tsx",
-          "frontend/src/components/landing/ParticleBackground.tsx",
-          "frontend/src/components/landing/DigitalClock.tsx",
-          "frontend/src/components/landing/WelcomeNarrativeSection.tsx",
-          "frontend/src/components/landing/CoreValuesGrid.tsx",
-          "frontend/src/index.css",
-          "frontend/public/assets/generated/tt-particles-bg.dim_1920x1080.png",
-          "frontend/public/assets/generated/tt-logo-3d-hero.dim_1600x1600.png"
-        ]
-      },
-      {
-        "id": "REQ-15",
-        "summary": "Create a dedicated Product Deep-Dive page (The TT-1 Transmitter) with a technical schematic/blueprint visual style and four component modules, each showing a high-resolution macro image and the exact technical description text provided for: ESP32-WROOM-32, DS3231 High-Precision RTC, DFPlayer Mini (FN-M16P) + 24-bit DAC, and 1kΩ Impedance Matching Resistors.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/ProductDeepDivePage.tsx",
-          "frontend/public/assets/generated/tt1-blueprint-bg.dim_1920x1080.png",
-          "frontend/public/assets/generated/tt1-macro-esp32.dim_1400x900.png",
-          "frontend/public/assets/generated/tt1-macro-ds3231.dim_1400x900.png",
-          "frontend/public/assets/generated/tt1-macro-dfplayer.dim_1400x900.png",
-          "frontend/public/assets/generated/tt1-macro-protection.dim_1400x900.png",
-          "frontend/src/components/layout/Header.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/ProductDeepDivePage.tsx",
-          "frontend/public/assets/generated/tt1-blueprint-bg.dim_1920x1080.png",
-          "frontend/public/assets/generated/tt1-macro-esp32.dim_1400x900.png",
-          "frontend/public/assets/generated/tt1-macro-ds3231.dim_1400x900.png",
-          "frontend/public/assets/generated/tt1-macro-dfplayer.dim_1400x900.png",
-          "frontend/public/assets/generated/tt1-macro-protection.dim_1400x900.png",
-          "frontend/src/components/layout/Header.tsx"
-        ]
-      },
-      {
-        "id": "REQ-16",
-        "summary": "Create a dedicated Board page (Executive Leadership) with glassmorphism cards and clean studio-style headshots for the four founders, using the exact names, roles, and descriptions provided in the blueprint.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/BoardPage.tsx",
-          "frontend/public/assets/generated/board-johann.dim_800x1000.png",
-          "frontend/public/assets/generated/board-joel.dim_800x1000.png",
-          "frontend/public/assets/generated/board-dejon.dim_800x1000.png",
-          "frontend/public/assets/generated/board-nandhu.dim_800x1000.png",
-          "frontend/src/components/layout/Header.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/BoardPage.tsx",
-          "frontend/public/assets/generated/board-johann.dim_800x1000.png",
-          "frontend/public/assets/generated/board-joel.dim_800x1000.png",
-          "frontend/public/assets/generated/board-dejon.dim_800x1000.png",
-          "frontend/public/assets/generated/board-nandhu.dim_800x1000.png",
-          "frontend/src/components/layout/Header.tsx"
-        ]
-      },
-      {
-        "id": "REQ-17",
-        "summary": "Create a dedicated Connect & Support page split into two zones: (A) a public “Messaging Terminal” contact form with fields Name, Email Address (required), and Message; and (B) a secure “Founders’ Vault” area that is gated behind Internet Identity authentication and profile completion.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/ConnectSupportPage.tsx",
-          "frontend/src/components/connect/MessagingTerminalForm.tsx",
-          "frontend/src/components/connect/FoundersVault.tsx",
-          "frontend/src/components/layout/Header.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/ConnectSupportPage.tsx",
-          "frontend/src/components/connect/MessagingTerminalForm.tsx",
-          "frontend/src/components/connect/FoundersVault.tsx",
-          "frontend/src/components/layout/Header.tsx"
-        ]
-      },
-      {
-        "id": "REQ-18",
-        "summary": "Implement backend persistence and admin access for “Messaging Terminal” submissions so that submitting the public contact form stores the message in the backend, and authenticated admins can retrieve a list of submissions for follow-up (no external email delivery required).",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/hooks/useMessageTerminal.ts",
-          "frontend/src/components/connect/MessagingTerminalForm.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/hooks/useMessageTerminal.ts",
-          "frontend/src/components/connect/MessagingTerminalForm.tsx"
-        ]
-      },
-      {
-        "id": "REQ-19",
-        "summary": "Replace the blueprint’s custom Name/Email/Password signup/login with Internet Identity-based “Sign up / Login” semantics: require Internet Identity authentication plus a stored user profile that includes Name and Email Address to unlock the Founders’ Vault secure contact details.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/auth/ProfileSetupModal.tsx",
-          "frontend/src/hooks/useCurrentUserProfile.ts",
-          "frontend/src/components/connect/FoundersVault.tsx",
-          "frontend/src/components/landing/ConnectGatewaySection.tsx",
-          "frontend/src/components/layout/Header.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/auth/ProfileSetupModal.tsx",
-          "frontend/src/components/connect/FoundersVault.tsx",
-          "frontend/src/components/landing/ConnectGatewaySection.tsx",
-          "frontend/src/components/layout/Header.tsx"
-        ]
-      },
-      {
-        "id": "REQ-20",
-        "summary": "After successful secure access registration/unlock, present the provided “Automated Network Access Email” content as an in-app confirmation screen/modal that the user can copy (subject + body), since external email sending is not part of this build.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/connect/AccessGrantedEmailModal.tsx",
-          "frontend/src/components/connect/FoundersVault.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/connect/AccessGrantedEmailModal.tsx",
-          "frontend/src/components/connect/FoundersVault.tsx"
-        ]
-      },
-      {
-        "id": "REQ-21",
-        "summary": "Implement the Founders’ Vault “Unlock” view to reveal the exact secure contact details after authentication: Official Phone +91 7356824245, Official Email tactic.transmit@gmail.com, Instagram @tactic_transmit.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/connect/FoundersVault.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/connect/FoundersVault.tsx"
-        ]
-      },
-      {
-        "id": "REQ-22",
-        "summary": "Create a Legal & Technical Docs area that includes (1) an updated Terms of Service section explicitly defining the IP ownership of the four founders, and (2) a Safety Audit document page/section presented as a signed document by Dejon and Johann.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/LegalTechnicalDocsPage.tsx",
-          "frontend/src/pages/TermsOfServicePage.tsx",
-          "frontend/public/assets/generated/sig-johann.dim_600x200.png",
-          "frontend/public/assets/generated/sig-dejon.dim_600x200.png",
-          "frontend/src/components/layout/Header.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/LegalTechnicalDocsPage.tsx",
-          "frontend/src/pages/TermsOfServicePage.tsx",
-          "frontend/public/assets/generated/sig-johann.dim_600x200.png",
-          "frontend/public/assets/generated/sig-dejon.dim_600x200.png",
-          "frontend/src/components/layout/Header.tsx"
-        ]
-      },
-      {
-        "id": "REQ-23",
-        "summary": "Update global navigation to match the blueprint’s footer navigation intent: include clear links for Home, Product, Board, and Login/Connect, and keep Terms/Privacy accessible from the footer (even if not in the primary nav).",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/layout/Header.tsx",
-          "frontend/src/components/layout/Footer.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/layout/Header.tsx",
-          "frontend/src/components/layout/Footer.tsx"
-        ]
-      },
-      {
-        "id": "REQ-24",
-        "summary": "Add explicit logout controls in the public portal navigation and/or Connect area so an authenticated user can clear the Internet Identity session and return to Home.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/layout/Header.tsx",
-          "frontend/src/components/connect/FoundersVault.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/layout/Header.tsx",
-          "frontend/src/components/connect/FoundersVault.tsx"
-        ]
-      },
-      {
-        "id": "REQ-25",
-        "summary": "Add Home page contact details in a public section: display the email tactic.transmit@gmail.com and Instagram handle @tactic_transmit.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/LandingPage.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/LandingPage.tsx"
+          "frontend/src/components/landing/HeroSection.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
-    "backend/blob-storage/Mixin.mo",
-    "backend/blob-storage/Storage.mo",
-    "backend/main.mo",
-    "backend/migration.mo",
     "build-request.json",
-    "caffeine.lock.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/public/assets/generated/board-dejon.dim_800x1000.png",
-    "frontend/public/assets/generated/board-joel.dim_800x1000.png",
-    "frontend/public/assets/generated/board-johann.dim_800x1000.png",
-    "frontend/public/assets/generated/board-nandhu.dim_800x1000.png",
-    "frontend/public/assets/generated/sig-dejon.dim_600x200.png",
-    "frontend/public/assets/generated/sig-johann.dim_600x200.png",
-    "frontend/public/assets/generated/tt-logo-3d-hero.dim_1600x1600.png",
-    "frontend/public/assets/generated/tt-particles-bg.dim_1920x1080.png",
-    "frontend/public/assets/generated/tt1-blueprint-bg.dim_1920x1080.png",
-    "frontend/public/assets/generated/tt1-macro-dfplayer.dim_1400x900.png",
-    "frontend/public/assets/generated/tt1-macro-ds3231.dim_1400x900.png",
-    "frontend/public/assets/generated/tt1-macro-esp32.dim_1400x900.png",
-    "frontend/public/assets/generated/tt1-macro-protection.dim_1400x900.png",
-    "frontend/src/App.tsx",
-    "frontend/src/backend.d.ts",
-    "frontend/src/backend.ts",
-    "frontend/src/components/auth/ProfileSetupModal.tsx",
-    "frontend/src/components/connect/AccessGrantedEmailModal.tsx",
-    "frontend/src/components/connect/FoundersVault.tsx",
-    "frontend/src/components/connect/MessagingTerminalForm.tsx",
-    "frontend/src/components/landing/CircuitryPulseBackground.tsx",
-    "frontend/src/components/landing/ConnectGatewaySection.tsx",
-    "frontend/src/components/landing/CoreValuesGrid.tsx",
-    "frontend/src/components/landing/DigitalClock.tsx",
-    "frontend/src/components/landing/ExecutiveBoardSection.tsx",
     "frontend/src/components/landing/HeroSection.tsx",
-    "frontend/src/components/landing/ParticleBackground.tsx",
-    "frontend/src/components/landing/ProductSection.tsx",
-    "frontend/src/components/landing/PublicContactSection.tsx",
-    "frontend/src/components/landing/WelcomeNarrativeSection.tsx",
-    "frontend/src/components/layout/Footer.tsx",
     "frontend/src/components/layout/Header.tsx",
-    "frontend/src/config.ts",
-    "frontend/src/declarations/backend.did.d.ts",
-    "frontend/src/declarations/backend.did.js",
-    "frontend/src/hooks/useMessageTerminal.ts",
-    "frontend/src/index.css",
-    "frontend/src/pages/BoardPage.tsx",
-    "frontend/src/pages/ConnectSupportPage.tsx",
-    "frontend/src/pages/LandingPage.tsx",
-    "frontend/src/pages/LegalTechnicalDocsPage.tsx",
-    "frontend/src/pages/ProductDeepDivePage.tsx",
-    "frontend/src/pages/TermsOfServicePage.tsx",
+    "frontend/src/constants/brand.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

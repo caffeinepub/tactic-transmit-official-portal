@@ -1,290 +1,57 @@
 {
   "kind": "build_request",
-  "title": "Full rebuild to implement the deep-dive multi-page TACTIC TRANSMIT portal blueprint",
-  "projectName": "TACTIC TRANSMIT Portal",
+  "title": "Use only the uploaded logo across the portal",
+  "projectName": "TACTIC TRANSMIT",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-13",
-      "text": "Restructure the public portal from a single long landing page into the blueprint’s interconnected multi-page site: Home, Product Deep-Dive, Board, Connect & Support, and Legal & Technical Docs, while keeping the existing Admin Dashboard route operational.",
+      "id": "REQ-28",
+      "text": "Add the newly uploaded logo image file (SmartSelect_20260214-130511_WhatsApp-1.jpg) to the frontend static assets under frontend/public/assets/generated and treat it as the single source-of-truth logo asset.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-8",
-          "msg-11",
-          "msg-14"
+          "msg-3"
         ],
         "quotes": [
-          "This is the finalized, deep-dive blueprint for the Tactic Transmit Official Portal. This multi-page, interconnected structure is designed to look like a high-tier engineering firm’s digital presence.",
-          "Page 1: The Home Page (The Pulse)",
-          "Full rebuild"
+          "Use the uploaded logo only"
         ]
       },
       "acceptanceCriteria": [
-        "App has separate routes/pages for: Home, Product, Board, Connect & Support, and Legal & Technical Docs (in addition to existing /admin, /terms, /privacy).",
-        "All navigation between these pages works on desktop and mobile.",
-        "Existing Admin Dashboard behavior remains available at /admin behind the existing auth/authorization guards."
+        "The file exists at frontend/public/assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg in the build output.",
+        "No additional derived/resized/generated logo files are required for runtime rendering."
       ]
     },
     {
-      "id": "REQ-14",
-      "text": "Rebuild the Home page (The Pulse) to match the blueprint content and interactions: a high-contrast dark mode experience with a mouse-reactive particle background layer; a cinematic 3D circular TT logo render that pulses in sync with an on-screen digital clock; the Hook headline exactly “PRECISION. AUTOMATED. SYNCHRONIZED.”; a Welcome Narrative section with the provided text and attribution; and a Core Value grid containing the three specified items.",
+      "id": "REQ-29",
+      "text": "Update the public portal UI to use only /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg anywhere a TT/Tactic Transmit logo is rendered (including the fixed header brand mark and the Home hero logo), removing references to any other logo image filenames currently used.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-8",
-          "msg-14"
+          "msg-3"
         ],
         "quotes": [
-          "Page 1: The Home Page (The Pulse)\nVisual Design: High-contrast dark mode. A background \"Particle\" effect that reacts to mouse movement.\n * The Hero Header: A cinematic 3D render of the circular TT logo. The logo pulses in sync with a digital clock in the corner.\n * The Hook: \"PRECISION. AUTOMATED. SYNCHRONIZED.\"\n * The Welcome Narrative: Written by Nandhukrishna Biju, this section explains the vision. \"Tactic Transmit is the bridge between institutional chaos and chronometric order. We provide the heartbeat that keeps ARS running perfectly.\"\n * Core Value Grid:\n   * High Fidelity: 24-bit audio clarity.\n   * Zero Drift: NTP-synced timekeeping.\n   * Safety First: 1k$\\Omega$ circuit protection.",
-          "Full rebuild"
+          "Use the uploaded logo only"
         ]
       },
       "acceptanceCriteria": [
-        "Home page displays the Hook text exactly: “PRECISION. AUTOMATED. SYNCHRONIZED.”",
-        "Home page includes a Welcome Narrative section that includes the exact quoted narrative sentence and credits Nandhukrishna Biju.",
-        "Home page includes a 3-item Core Value grid with labels and descriptions exactly as provided (High Fidelity / Zero Drift / Safety First).",
-        "A particle background layer responds to mouse movement without blocking page interaction or causing major scroll jank.",
-        "A digital clock element is visible in the hero area, and the TT logo pulse animation is visually synchronized to it (e.g., pulse aligned to second ticks)."
-      ]
-    },
-    {
-      "id": "REQ-15",
-      "text": "Create a dedicated Product Deep-Dive page (The TT-1 Transmitter) with a technical schematic/blueprint visual style and four component modules, each showing a high-resolution macro image and the exact technical description text provided for: ESP32-WROOM-32, DS3231 High-Precision RTC, DFPlayer Mini (FN-M16P) + 24-bit DAC, and 1kΩ Impedance Matching Resistors.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-8",
-          "msg-14"
-        ],
-        "quotes": [
-          "Page 2: Product Deep-Dive (The TT-1 Transmitter)\nVisual Design: A \"Technical Schematic\" look with blueprints in the background. Each component is displayed with a high-resolution \"Macro\" photo.",
-          "2. Deep-Dive Product Details (For Page 2)\nA. The Processing Core\n * Component: ESP32-WROOM-32.\n * Technical Detail: Features an integrated Dual-Core Xtensa® 32-bit LX6 microprocessor. We utilize \"Task Pinning\" logic—one core handles the Wi-Fi stack and NTP time-fetching, while the second core runs the time-critical audio interrupts. This prevents the \"system stutter\" found in cheaper, single-core bell systems.\nB. The Chronometric Heart\n * Component: DS3231 High-Precision RTC.\n * Technical Detail: This module uses an Integrated Temperature-Compensated Crystal Oscillator (TCXO). Standard clocks drift as the room temperature changes; the TT-1 stays accurate within \\pm2 minutes per year, even in extreme conditions.\nC. The Auditory Engine\n * Component: DFPlayer Mini (FN-M16P).\n * Technical Detail: It decodes FAT16 and FAT32 file systems. By bypassing standard buzzing sounds and using a 24-bit DAC (Digital-to-Analog Converter), we achieve a Signal-to-Noise Ratio (SNR) of 85dB, providing studio-grade announcement quality.\nD. The Safety Manifold\n * Component: 1k$\\Omega$ Impedance Matching Resistors.\n * Technical Detail: Engineered by Dejon Justine, this stage acts as a Galvanic-style isolation buffer. It matches the low-voltage output of the microcontroller to the high-impedance input of the campus amplifier, eliminating \"Pop\" noises and protecting the school's hardware from DC offset."
-        ]
-      },
-      "acceptanceCriteria": [
-        "Product Deep-Dive page exists as its own route and is reachable from global navigation.",
-        "The page contains exactly four component sections and each section includes (a) a macro photo image, (b) the component name, and (c) the exact technical detail text supplied in the blueprint (including special characters like Xtensa® and 1kΩ).",
-        "The page uses a blueprint/technical schematic visual background treatment that is distinct from the Home page presentation while remaining consistent with the overall portal theme."
-      ]
-    },
-    {
-      "id": "REQ-16",
-      "text": "Create a dedicated Board page (Executive Leadership) with glassmorphism cards and clean studio-style headshots for the four founders, using the exact names, roles, and descriptions provided in the blueprint.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-8"
-        ],
-        "quotes": [
-          "Page 3: The Board (Executive Leadership)\nVisual Design: Clean \"Studio\" style headshots with a glassmorphism card for each member.\n * Johann G. Thekkel (Lead Architect & Lead Code): The final authority on all system logic and PCB fabrication.\n * Joel Abraham (Chief Designer & Chief Presenter): The visionary responsible for how the system looks, feels, and is presented to the public.\n * Dejon Justine (Treasurer & Investor): The master of capital allocation and hardware safety auditing.\n * Nandhukrishna Biju (Ad Handler & Brand Strategist): The strategist managing the TT brand, the sonic identity, and this very portal."
-        ]
-      },
-      "acceptanceCriteria": [
-        "Board page exists as its own route and is reachable from global navigation.",
-        "Each founder is displayed with a headshot image and a glassmorphism card containing the exact name and role text in the blueprint.",
-        "Each founder card includes the exact one-sentence description from the blueprint."
-      ]
-    },
-    {
-      "id": "REQ-17",
-      "text": "Create a dedicated Connect & Support page split into two zones: (A) a public “Messaging Terminal” contact form with fields Name, Email Address (required), and Message; and (B) a secure “Founders’ Vault” area that is gated behind Internet Identity authentication and profile completion.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-8",
-          "msg-14"
-        ],
-        "quotes": [
-          "Page 4: Connect & Support (The Gateway)\nVisual Design: Minimalist. The page is split into two zones: Public and Secure.\nZone A: The Messaging Terminal (Public)\n * The Interaction: A smooth contact form.\n * Fields: Name | Email Address (Required) | Message.\n * The Logic: Once sent, the message is routed to the team. You only respond via the email they provide, keeping your internal data private.\nZone B: The Founders' Vault (Secure)\n * The Barrier: A button labeled \"Access Secure Contact Details\".\n * The Interaction: If the user is not logged in, they see: \"Sign up to unlock the Tactic Transmit direct contact line.\"",
-          "Full rebuild"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Connect & Support page exists as its own route and is reachable from global navigation.",
-        "Messaging Terminal form validates that Email Address is required before submission.",
-        "Founders’ Vault includes a button labeled exactly: “Access Secure Contact Details”.",
-        "When the viewer is not authenticated, Founders’ Vault displays the message exactly: “Sign up to unlock the Tactic Transmit direct contact line.”"
-      ]
-    },
-    {
-      "id": "REQ-18",
-      "text": "Implement backend persistence and admin access for “Messaging Terminal” submissions so that submitting the public contact form stores the message in the backend, and authenticated admins can retrieve a list of submissions for follow-up (no external email delivery required).",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-8"
-        ],
-        "quotes": [
-          "Zone A: The Messaging Terminal (Public)\n * The Logic: Once sent, the message is routed to the team. You only respond via the email they provide, keeping your internal data private."
-        ]
-      },
-      "acceptanceCriteria": [
-        "Backend exposes an update method to submit a message containing: name, email, message text, and a server timestamp.",
-        "Backend exposes an admin-only query to list submitted messages.",
-        "Non-admin callers cannot read the stored messages list.",
-        "Frontend contact form submits successfully and shows a clear success state after the backend accepts the message."
-      ]
-    },
-    {
-      "id": "REQ-19",
-      "text": "Replace the blueprint’s custom Name/Email/Password signup/login with Internet Identity-based “Sign up / Login” semantics: require Internet Identity authentication plus a stored user profile that includes Name and Email Address to unlock the Founders’ Vault secure contact details.",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-8",
-          "msg-11",
-          "msg-14"
-        ],
-        "quotes": [
-          "The Signup/Login: A simple 3-field signup (Name/Email/Password).",
-          "Authentication must use Internet Identity.",
-          "Full rebuild"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Secure contact details are only revealed when the user is authenticated via Internet Identity and has completed a profile that includes a non-empty name and email address.",
-        "No password-based authentication UI or storage is implemented.",
-        "Profile capture UI includes a required Email Address field in addition to Name (stored in backend user profile)."
-      ]
-    },
-    {
-      "id": "REQ-20",
-      "text": "After successful secure access registration/unlock, present the provided “Automated Network Access Email” content as an in-app confirmation screen/modal that the user can copy (subject + body), since external email sending is not part of this build.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-8"
-        ],
-        "quotes": [
-          "To finalize the Tactic Transmit Portal, here is the \"Welcome\" email that will be automatically triggered when a user joins the network to access your private contact details.\nSubject: Access Granted: Tactic Transmit Secure Infrastructure\nFrom: Tactic Transmit (tactic.transmit@gmail.com)\n> Welcome to the Pulse.\n> You are receiving this email because you have successfully registered with the Tactic Transmit Official Portal. Your account now grants you \"Tier 1\" access to our internal contact registry and technical documentation.\n> Verified Founder Contact Lines:\n>  * Direct Hotline: +91 7356824245\n>  * Official Instagram: @tactic_transmit\n>  * Primary Inquiry Email: tactic.transmit@gmail.com\n> Our Lead Architect, Johann G. Thekkel, and Ad Handler, Nandhukrishna Biju, have been notified of your registration. If you are an administrator requesting a schedule audit or a hardware demo, please reply directly to this email or use the Messaging Terminal on our portal.\n> Precision. Automated. Synchronized.\n> The Tactic Transmit Board\n> Johann | Joel | Dejon | Nandhu"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Upon first-time successful unlock (or immediately after profile completion if needed), the UI shows the full provided email subject and body text exactly, with a “Copy” action.",
-        "The UI does not claim that an email was actually sent; it presents it as an on-screen message that can be copied."
-      ]
-    },
-    {
-      "id": "REQ-21",
-      "text": "Implement the Founders’ Vault “Unlock” view to reveal the exact secure contact details after authentication: Official Phone +91 7356824245, Official Email tactic.transmit@gmail.com, Instagram @tactic_transmit.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-8"
-        ],
-        "quotes": [
-          " * The Unlock: Once the user logs in, the page reloads to reveal:\n   * Official Phone: +91 7356824245\n   * Official Email: tactic.transmit@gmail.com\n   * Instagram: @tactic_transmit"
-        ]
-      },
-      "acceptanceCriteria": [
-        "When authenticated and profile-complete, the Founders’ Vault reveals all three contact lines exactly as specified.",
-        "When unauthenticated, the secure contact lines are not visible anywhere on the page (only the gating message and CTA are visible)."
-      ]
-    },
-    {
-      "id": "REQ-22",
-      "text": "Create a Legal & Technical Docs area that includes (1) an updated Terms of Service section explicitly defining the IP ownership of the four founders, and (2) a Safety Audit document page/section presented as a signed document by Dejon and Johann.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-8"
-        ],
-        "quotes": [
-          "Page 5: Legal & Technical Docs\nVisual Design: Clean, text-heavy, authoritative.\n * Terms of Service: Defining the IP ownership of the four founders.\n * Safety Audit: A signed document by Dejon and Johann confirming the electrical safety of the TT-1 for school use."
-        ]
-      },
-      "acceptanceCriteria": [
-        "Users can navigate to Legal & Technical Docs from the site navigation (either directly or via a docs landing page).",
-        "Terms content includes a clear IP ownership statement naming Johann G. Thekkel, Joel Abraham, Dejon Justine, and Nandhukrishna Biju.",
-        "Safety Audit content is presented as a document-like page/section and includes visible signature blocks for Dejon and Johann (as text and/or signature images)."
-      ]
-    },
-    {
-      "id": "REQ-23",
-      "text": "Update global navigation to match the blueprint’s footer navigation intent: include clear links for Home, Product, Board, and Login/Connect, and keep Terms/Privacy accessible from the footer (even if not in the primary nav).",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-8",
-          "msg-14"
-        ],
-        "quotes": [
-          "Footer (Global Navigation)\n[ Home ] | [ Product ] | [ Board ] | [ Login ]",
-          "Full rebuild"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Header navigation includes links for Home, Product, Board, and Login/Connect.",
-        "Footer retains working links to Terms of Service and Privacy Policy (existing pages).",
-        "Navigation works on both desktop and mobile (including hamburger menu behavior)."
-      ]
-    },
-    {
-      "id": "REQ-24",
-      "text": "Add explicit logout controls in the public portal navigation and/or Connect area so an authenticated user can clear the Internet Identity session and return to Home.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-8"
-        ],
-        "quotes": [
-          "Footer (Global Navigation)\n[ Home ] | [ Product ] | [ Board ] | [ Login ]"
-        ]
-      },
-      "acceptanceCriteria": [
-        "When the user activates Logout, the Internet Identity session is cleared using the existing auth hook behavior and the UI returns the user to Home (/).",
-        "After logout, protected areas (Admin dashboard and Founders’ Vault details) are no longer accessible without logging in again."
-      ]
-    },
-    {
-      "id": "REQ-25",
-      "text": "Add Home page contact details in a public section: display the email tactic.transmit@gmail.com and Instagram handle @tactic_transmit.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-8"
-        ],
-        "quotes": [
-          "Add Contact details on the Home page including email (tactic.transmit@gmail.com) and Instagram (@tactic_transmit)"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Home page displays tactic.transmit@gmail.com and @tactic_transmit in a clearly readable section.",
-        "This public contact section does not reveal the secure phone line unless the user unlocks it in the Founders’ Vault."
+        "Header logo renders from /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg.",
+        "Home hero logo renders from /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg.",
+        "A repo-wide search shows no remaining references to previous logo filenames (e.g., /assets/generated/tt-logo-user.dim_*.png or other TT logo renders).",
+        "The site renders without broken-image placeholders on all routes (Home, Product, Board, Connect, Admin, Terms, Privacy, Legal Docs)."
       ]
     }
   ],
   "constraints": [
-    "Do not edit any files under frontend/src/components/ui (read-only).",
-    "Do not edit the immutable frontend paths listed in SYSTEM_CONTEXT (compose around them instead).",
-    "Keep all Motoko backend logic in the single actor file backend/main.mo (single-actor architecture).",
-    "Do not implement password-based authentication; Internet Identity must remain the only authentication mechanism.",
-    "Do not implement external email delivery; present the welcome email content in-app instead.",
-    "All user-facing text must be in English and must match the blueprint exactly where specified (headlines, labels, secure-gating message, contact lines, and provided email content)."
+    "Do not edit any files under frontend/src/components/ui or any paths listed in frontend.immutablePaths in SYSTEM_CONTEXT.",
+    "Keep the backend single-actor architecture unchanged; no backend changes are required for this request.",
+    "Use English for any user-facing text."
   ],
   "nonGoals": [
-    "Do not add third-party authentication providers (e.g., Google/GitHub/Auth0).",
-    "Do not integrate external email/SMS services for message routing or welcome emails.",
-    "Do not add real-time messaging/chat or WebSocket features.",
-    "Do not add external databases or non-IC storage systems."
+    "Redesigning layout, typography, animations, or navigation behavior beyond what is necessary to swap the logo asset.",
+    "Creating or generating new logo variants (PNG/SVG) or additional sizes derived from the upload."
   ],
   "imageRequirements": {
-    "required": [
-      "Mouse-reactive particle background texture (tt-particles-bg.dim_1920x1080.png)",
-      "3D circular TT logo hero render (tt-logo-3d-hero.dim_1600x1600.png)",
-      "Blueprint/schematic background for product page (tt1-blueprint-bg.dim_1920x1080.png)",
-      "Macro photo of ESP32-WROOM-32 chip with glowing pinouts (tt1-macro-esp32.dim_1400x900.png)",
-      "Macro photo of DS3231 RTC module showing crystal oscillator and backup battery (tt1-macro-ds3231.dim_1400x900.png)",
-      "Macro photo of DFPlayer Mini module highlighting SD card slot and audio chip (tt1-macro-dfplayer.dim_1400x900.png)",
-      "Macro photo of PCB traces and protection resistors (tt1-macro-protection.dim_1400x900.png)",
-      "Studio headshot portrait of Johann G. Thekkel (board-johann.dim_800x1000.png)",
-      "Studio headshot portrait of Joel Abraham (board-joel.dim_800x1000.png)",
-      "Studio headshot portrait of Dejon Justine (board-dejon.dim_800x1000.png)",
-      "Studio headshot portrait of Nandhukrishna Biju (board-nandhu.dim_800x1000.png)",
-      "Signature-style handwritten name for Johann (sig-johann.dim_600x200.png)",
-      "Signature-style handwritten name for Dejon (sig-dejon.dim_600x200.png)"
-    ],
+    "required": [],
     "edits": []
   },
   "userProfileUpdate": {

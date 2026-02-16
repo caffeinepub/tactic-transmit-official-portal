@@ -1,20 +1,22 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 9,
-  "summary": "Shift to a full rebuild of the TACTIC TRANSMIT Official Portal based on the provided multi-page deep-dive blueprint: interactive particle-reactive dark UI, enhanced Home/Product/Board/Connect/Legal pages with gated secure contact access, automated welcome email on registration, and expanded technical/safety documentation content.",
+  "projectStateVersion": 13,
+  "summary": "Update rebuild to use a user-supplied logo asset and avoid AI-generated founder images: Board/Executive Leadership should be text-forward (no founder portraits) with expanded written descriptions.",
   "architectural_notes": [
     "Portal uses a deep-tech glassmorphism UI style with dark gradient background and animated/pulsing status indicators.",
     "Admin access requires authentication before displaying operational metrics (uptime, NTP status).",
     "Typography: use Orbitron and JetBrains Mono as the primary site fonts.",
     "Project direction: full rebuild to implement the provided deep-dive multi-page blueprint, overwriting existing page structures/content.",
     "Connect & Support includes two zones: public contact form plus an authenticated secure-contact vault that reveals founder contact info after login.",
-    "Automated transactional email should be sent upon successful user registration to grant Tier 1 access to secure contact registry/docs."
+    "Automated transactional email should be sent upon successful user registration to grant Tier 1 access to secure contact registry/docs.",
+    "Use the user-provided logo asset for branding; do not rely on AI-generated logo renders if a source logo is provided.",
+    "Do not use AI-generated founder portraits/headshots; Board page should be text-only with more detailed descriptions.",
+    "Branding constraint: use ONLY the user-uploaded logo asset across the site; do not use any AI-generated or other generated/placeholder logo renders."
   ],
   "known_issues": [
     "Potential scope/auth conflict: existing requirement uses Internet Identity for authentication, but blueprint specifies a custom Name/Email/Password signup/login for gated secure contacts—requires reconciliation/decision."
   ],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Mouse-reactive particle background texture (tt-particles-bg.dim_1920x1080.png)\n- 3D circular TT logo hero render (tt-logo-3d-hero.dim_1600x1600.png)\n- Blueprint/schematic background for product page (tt1-blueprint-bg.dim_1920x1080.png)\n- Macro photo of ESP32-WROOM-32 chip with glowing pinouts (tt1-macro-esp32.dim_1400x900.png)\n- Macro photo of DS3231 RTC module showing crystal oscillator and backup battery (tt1-macro-ds3231.dim_1400x900.png)\n- Macro photo of DFPlayer Mini module highlighting SD card slot and audio chip (tt1-macro-dfplayer.dim_1400x900.png)\n- Macro photo of PCB traces and protection resistors (tt1-macro-protection.dim_1400x900.png)\n- Studio headshot portrait of Johann G. Thekkel (board-johann.dim_800x1000.png)\n- Studio headshot portrait of Joel Abraham (board-joel.dim_800x1000.png)\n- Studio headshot portrait of Dejon Justine (board-dejon.dim_800x1000.png)\n- Studio headshot portrait of Nandhukrishna Biju (board-nandhu.dim_800x1000.png)\n- Signature-style handwritten name for Johann (sig-johann.dim_600x200.png)\n- Signature-style handwritten name for Dejon (sig-dejon.dim_600x200.png)",
   "existing_features": [
     {
       "id": "feature-create-a-public-marketing-landing-page-for-tactic-transmit-that-follows-the-specified-deep-tech-visual-identity-dark-charcoal-to-navy-gradient-background-glassmorphism-blurred-semi-transparent-panels-neon-blue-accent-pulses-and-a-circular-tt-logo-in-the-header-that-softly-pulses-to-indicate-system-vitality",
@@ -207,6 +209,30 @@
         "REQ-25"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-add-the-user-uploaded-logo-image-smartselect-20260214-130511-whatsapp-jpg-to-the-frontend-as-a-static-asset-under-frontend-public-assets-generated-and-use-it-as-the-primary-brand-logo-image-across-the-public-portal-header-brand-mark-and-home-hero-logo-replacing-the-currently-referenced-generated-logo-images",
+      "title": "Add the user-uploaded logo image (SmartSelect_20260214-130511_WhatsApp.jpg) to the frontend as a static asset under frontend/public/assets/generated and use it as the primary brand/logo image across the public portal (header brand mark and home hero logo), replacing the currently-referenced generated logo images.",
+      "reqIds": [
+        "REQ-26"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-board-page-executive-leadership-to-use-no-founder-photos-images-do-not-use-ai-images-for-founders-remove-founder-image-rendering-and-make-the-board-executive-leadership-section-text-forward-with-more-detailed-written-descriptions-for-each-founder-while-preserving-the-existing-founder-names-and-roles",
+      "title": "Update the Board page (Executive Leadership) to use no founder photos/images (do not use AI images for founders). Remove founder image rendering and make the Board/Executive Leadership section text-forward with more detailed written descriptions for each founder while preserving the existing founder names and roles.",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-public-portal-ui-to-use-only-assets-generated-smartselect-20260214-130511-whatsapp-1-jpg-anywhere-a-tt-tactic-transmit-logo-is-rendered-including-the-fixed-header-brand-mark-and-the-home-hero-logo-removing-references-to-any-other-logo-image-filenames-currently-used",
+      "title": "Update the public portal UI to use only /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg anywhere a TT/Tactic Transmit logo is rendered (including the fixed header brand mark and the Home hero logo), removing references to any other logo image filenames currently used.",
+      "reqIds": [
+        "REQ-29"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -336,6 +362,26 @@
       "id": "AR-27",
       "summary": "Global footer navigation update to match blueprint: links for Home, Product, Board, Login",
       "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-28",
+      "summary": "Use the user-provided logo asset for the site branding/hero/logo areas, replacing any generated logo renders as needed",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-29",
+      "summary": "Remove/avoid AI-generated founder images on the Board/Executive Leadership area: use no founder photos and expand written founder descriptions instead",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-30",
+      "summary": "Add the newly uploaded logo image file (SmartSelect_20260214-130511_WhatsApp-1.jpg) to the frontend static assets under frontend/public/assets/generated and treat it as the single source-of-truth logo asset.",
+      "reqIds": [
+        "REQ-28"
+      ],
       "status": "pending"
     }
   ],

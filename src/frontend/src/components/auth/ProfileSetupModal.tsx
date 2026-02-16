@@ -43,7 +43,7 @@ export default function ProfileSetupModal({ open, onComplete }: ProfileSetupModa
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-3 bg-black/30 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neon-blue transition-colors"
+              className="w-full px-4 py-3 bg-black/30 border border-white/20 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:border-neon-blue transition-colors"
               placeholder="Enter your name"
               autoFocus
               required
@@ -59,7 +59,7 @@ export default function ProfileSetupModal({ open, onComplete }: ProfileSetupModa
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 bg-black/30 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neon-blue transition-colors"
+              className="w-full px-4 py-3 bg-black/30 border border-white/20 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:border-neon-blue transition-colors"
               placeholder="your.email@example.com"
               required
             />

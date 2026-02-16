@@ -1,413 +1,47 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "TACTIC TRANSMIT Portal — Deep-dive multi-page public site rebuild (frontend-only)",
+  "title": "Use only the uploaded logo across the portal",
   "requirements": [
     {
-      "id": "REQ-13",
-      "summary": "Restructure the public portal into interconnected multi-page routes while keeping /admin operational.",
+      "id": "REQ-28",
+      "summary": "Add the uploaded logo JPG as the single source-of-truth static logo asset in frontend public assets.",
       "acceptanceCriteria": [
-        "App has separate routes/pages for: Home, Product, Board, Connect & Support, and Legal & Technical Docs (in addition to existing /admin, /terms, /privacy).",
-        "All navigation between these pages works on desktop and mobile.",
-        "Existing Admin Dashboard behavior remains available at /admin behind the existing auth/authorization guards."
+        "The file exists at frontend/public/assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg in the build output.",
+        "No additional derived/resized/generated logo files are required for runtime rendering."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Add new TanStack Router routes for Product Deep-Dive, Board, Connect & Support, and Legal & Technical Docs; keep existing /admin, /terms, /privacy routes unchanged and operational."
-        },
-        {
-          "path": "frontend/src/pages/ProductDeepDivePage.tsx",
+          "path": "frontend/public/assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg",
           "operation": "create",
-          "description": "Create the dedicated Product Deep-Dive page route component and ensure it is designed for standalone navigation."
-        },
-        {
-          "path": "frontend/src/pages/BoardPage.tsx",
-          "operation": "create",
-          "description": "Create the dedicated Board page route component and ensure it is designed for standalone navigation."
-        },
-        {
-          "path": "frontend/src/pages/ConnectSupportPage.tsx",
-          "operation": "create",
-          "description": "Create the dedicated Connect & Support page route component with both public and secure zones."
-        },
-        {
-          "path": "frontend/src/pages/LegalTechnicalDocsPage.tsx",
-          "operation": "create",
-          "description": "Create the dedicated Legal & Technical Docs page route component and ensure it is reachable from site navigation."
-        },
-        {
-          "path": "frontend/src/components/layout/Header.tsx",
-          "operation": "modify",
-          "description": "Update header navigation items to match the new multi-page structure and ensure responsive mobile navigation works across the new routes."
-        },
-        {
-          "path": "frontend/src/components/layout/Footer.tsx",
-          "operation": "modify",
-          "description": "Update footer navigation intent to include the blueprint’s public navigation links while keeping Terms/Privacy accessible."
+          "description": "Add/copy the uploaded logo image into the static assets folder so it is available at runtime as the single logo source-of-truth."
         }
       ]
     },
     {
-      "id": "REQ-14",
-      "summary": "Rebuild the Home page (The Pulse) with mouse-reactive particle background, synchronized clock + TT logo pulse, and blueprint-specified content blocks.",
+      "id": "REQ-29",
+      "summary": "Update all portal logo renders (header brand mark + Home hero logo) to reference only the uploaded logo JPG and remove references to prior logo filenames.",
       "acceptanceCriteria": [
-        "Home page displays the Hook text exactly: “PRECISION. AUTOMATED. SYNCHRONIZED.”",
-        "Home page includes a Welcome Narrative section that includes the exact quoted narrative sentence and credits Nandhukrishna Biju.",
-        "Home page includes a 3-item Core Value grid with labels and descriptions exactly as provided (High Fidelity / Zero Drift / Safety First).",
-        "A particle background layer responds to mouse movement without blocking page interaction or causing major scroll jank.",
-        "A digital clock element is visible in the hero area, and the TT logo pulse animation is visually synchronized to it (e.g., pulse aligned to second ticks)."
+        "Header logo renders from /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg.",
+        "Home hero logo renders from /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg.",
+        "A repo-wide search shows no remaining references to previous logo filenames (e.g., /assets/generated/tt-logo-user.dim_*.png or other TT logo renders).",
+        "The site renders without broken-image placeholders on all routes (Home, Product, Board, Connect, Admin, Terms, Privacy, Legal Docs)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/LandingPage.tsx",
+          "path": "frontend/src/constants/brand.ts",
+          "operation": "create",
+          "description": "Create a single exported constant for the portal logo path (use /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg) so all logo renders import from one place."
+        },
+        {
+          "path": "frontend/src/components/layout/Header.tsx",
           "operation": "modify",
-          "description": "Refactor the Home page composition to match the blueprint structure for The Pulse (hero + narrative + core values + public contact), removing any mismatching legacy sections."
+          "description": "Replace the header logo image source to use the shared logo constant pointing to /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg, removing the existing /assets/generated/tt-logo-user.dim_512x512.png reference."
         },
         {
           "path": "frontend/src/components/landing/HeroSection.tsx",
           "operation": "modify",
-          "description": "Rebuild the hero to include the exact Hook headline “PRECISION. AUTOMATED. SYNCHRONIZED.”, show the on-screen digital clock, and render the 3D circular TT logo hero image with a pulse that aligns to second ticks."
-        },
-        {
-          "path": "frontend/src/components/landing/ParticleBackground.tsx",
-          "operation": "create",
-          "description": "Implement a mouse-reactive particle background layer for the Home page that is visually present but does not block interactions (pointer-events off) and avoids scroll jank by using efficient rendering."
-        },
-        {
-          "path": "frontend/src/components/landing/DigitalClock.tsx",
-          "operation": "create",
-          "description": "Create a reusable digital clock component for the hero area that provides stable second-tick updates usable for synchronizing the TT logo pulse."
-        },
-        {
-          "path": "frontend/src/components/landing/WelcomeNarrativeSection.tsx",
-          "operation": "create",
-          "description": "Add the Welcome Narrative section including the exact sentence “Tactic Transmit is the bridge between institutional chaos and chronometric order. We provide the heartbeat that keeps ARS running perfectly.” and attribution to Nandhukrishna Biju."
-        },
-        {
-          "path": "frontend/src/components/landing/CoreValuesGrid.tsx",
-          "operation": "create",
-          "description": "Add the Core Value grid with exactly three items and the exact labels/descriptions: High Fidelity: 24-bit audio clarity. Zero Drift: NTP-synced timekeeping. Safety First: 1kΩ circuit protection."
-        },
-        {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Adjust global styles/animations to support a high-contrast dark mode The Pulse hero presentation and add a clock-synced pulse animation utility (without creating new global stylesheet paths)."
-        },
-        {
-          "path": "frontend/public/assets/generated/tt-particles-bg.dim_1920x1080.png",
-          "operation": "create",
-          "description": "Add the required generated asset and wire it for the Home particle layer: frontend/public/assets/generated/tt-particles-bg.dim_1920x1080.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/tt-logo-3d-hero.dim_1600x1600.png",
-          "operation": "create",
-          "description": "Add the required generated hero logo asset and wire it into the Home hero: frontend/public/assets/generated/tt-logo-3d-hero.dim_1600x1600.png."
-        }
-      ]
-    },
-    {
-      "id": "REQ-15",
-      "summary": "Create the dedicated Product Deep-Dive page with technical schematic styling and four macro-image modules using exact technical copy.",
-      "acceptanceCriteria": [
-        "Product Deep-Dive page exists as its own route and is reachable from global navigation.",
-        "The page contains exactly four component sections and each section includes (a) a macro photo image, (b) the component name, and (c) the exact technical detail text supplied in the blueprint (including special characters like Xtensa® and 1kΩ).",
-        "The page uses a blueprint/technical schematic visual background treatment that is distinct from the Home page presentation while remaining consistent with the overall portal theme."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/ProductDeepDivePage.tsx",
-          "operation": "modify",
-          "description": "Implement the Product Deep-Dive content layout with a schematic/blueprint visual treatment and exactly four component modules using the blueprint’s exact technical text (including Xtensa® and 1kΩ)."
-        },
-        {
-          "path": "frontend/public/assets/generated/tt1-blueprint-bg.dim_1920x1080.png",
-          "operation": "create",
-          "description": "Add the required generated background and wire it into the Product Deep-Dive page: frontend/public/assets/generated/tt1-blueprint-bg.dim_1920x1080.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/tt1-macro-esp32.dim_1400x900.png",
-          "operation": "create",
-          "description": "Add the required macro asset and wire it into the ESP32-WROOM-32 module: frontend/public/assets/generated/tt1-macro-esp32.dim_1400x900.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/tt1-macro-ds3231.dim_1400x900.png",
-          "operation": "create",
-          "description": "Add the required macro asset and wire it into the DS3231 module: frontend/public/assets/generated/tt1-macro-ds3231.dim_1400x900.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/tt1-macro-dfplayer.dim_1400x900.png",
-          "operation": "create",
-          "description": "Add the required macro asset and wire it into the DFPlayer Mini (FN-M16P) module: frontend/public/assets/generated/tt1-macro-dfplayer.dim_1400x900.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/tt1-macro-protection.dim_1400x900.png",
-          "operation": "create",
-          "description": "Add the required macro asset and wire it into the 1kΩ resistor safety module: frontend/public/assets/generated/tt1-macro-protection.dim_1400x900.png."
-        },
-        {
-          "path": "frontend/src/components/layout/Header.tsx",
-          "operation": "modify",
-          "description": "Ensure the global navigation includes a clear link to the Product Deep-Dive route and that it works on desktop and mobile."
-        }
-      ]
-    },
-    {
-      "id": "REQ-16",
-      "summary": "Create the dedicated Board (Executive Leadership) page with glassmorphism cards and studio headshots using exact founder text.",
-      "acceptanceCriteria": [
-        "Board page exists as its own route and is reachable from global navigation.",
-        "Each founder is displayed with a headshot image and a glassmorphism card containing the exact name and role text in the blueprint.",
-        "Each founder card includes the exact one-sentence description from the blueprint."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/BoardPage.tsx",
-          "operation": "modify",
-          "description": "Implement the Board page with glassmorphism cards and the exact founder name/role/description strings from the blueprint."
-        },
-        {
-          "path": "frontend/public/assets/generated/board-johann.dim_800x1000.png",
-          "operation": "create",
-          "description": "Add the required generated headshot and wire it into the Board page: frontend/public/assets/generated/board-johann.dim_800x1000.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/board-joel.dim_800x1000.png",
-          "operation": "create",
-          "description": "Add the required generated headshot and wire it into the Board page: frontend/public/assets/generated/board-joel.dim_800x1000.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/board-dejon.dim_800x1000.png",
-          "operation": "create",
-          "description": "Add the required generated headshot and wire it into the Board page: frontend/public/assets/generated/board-dejon.dim_800x1000.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/board-nandhu.dim_800x1000.png",
-          "operation": "create",
-          "description": "Add the required generated headshot and wire it into the Board page: frontend/public/assets/generated/board-nandhu.dim_800x1000.png."
-        },
-        {
-          "path": "frontend/src/components/layout/Header.tsx",
-          "operation": "modify",
-          "description": "Ensure the global navigation includes a clear link to the Board route and that it works on desktop and mobile."
-        }
-      ]
-    },
-    {
-      "id": "REQ-17",
-      "summary": "Create Connect & Support page with a public Messaging Terminal form and a secure Founders’ Vault gated by Internet Identity + profile completion.",
-      "acceptanceCriteria": [
-        "Connect & Support page exists as its own route and is reachable from global navigation.",
-        "Messaging Terminal form validates that Email Address is required before submission.",
-        "Founders’ Vault includes a button labeled exactly: “Access Secure Contact Details”.",
-        "When the viewer is not authenticated, Founders’ Vault displays the message exactly: “Sign up to unlock the Tactic Transmit direct contact line.”"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/ConnectSupportPage.tsx",
-          "operation": "modify",
-          "description": "Implement the split-layout Connect & Support page with Zone A (Messaging Terminal form) and Zone B (Founders’ Vault gating + CTA button text exactly “Access Secure Contact Details”)."
-        },
-        {
-          "path": "frontend/src/components/connect/MessagingTerminalForm.tsx",
-          "operation": "create",
-          "description": "Create the public Messaging Terminal contact form component with fields Name, Email Address (required), and Message; include client-side validation for required Email Address."
-        },
-        {
-          "path": "frontend/src/components/connect/FoundersVault.tsx",
-          "operation": "create",
-          "description": "Create the Founders’ Vault component gated by Internet Identity authentication and profile completion; when unauthenticated show exactly “Sign up to unlock the Tactic Transmit direct contact line.” and the CTA button."
-        },
-        {
-          "path": "frontend/src/components/layout/Header.tsx",
-          "operation": "modify",
-          "description": "Add a clear header navigation link for Login/Connect that routes to the Connect & Support page and works in the mobile menu as well."
-        }
-      ]
-    },
-    {
-      "id": "REQ-18",
-      "summary": "Wire Messaging Terminal submissions to backend persistence and show a clear success state after submission is accepted.",
-      "acceptanceCriteria": [
-        "Backend exposes an update method to submit a message containing: name, email, message text, and a server timestamp.",
-        "Backend exposes an admin-only query to list submitted messages.",
-        "Non-admin callers cannot read the stored messages list.",
-        "Frontend contact form submits successfully and shows a clear success state after the backend accepts the message."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/hooks/useMessageTerminal.ts",
-          "operation": "create",
-          "description": "Add React Query mutation hook(s) for submitting Messaging Terminal entries via the backend actor and for managing success/error UI states."
-        },
-        {
-          "path": "frontend/src/components/connect/MessagingTerminalForm.tsx",
-          "operation": "modify",
-          "description": "Connect the Messaging Terminal form submission to the backend submit capability, then show a clear in-form success state after acceptance (no external email delivery claims)."
-        }
-      ]
-    },
-    {
-      "id": "REQ-19",
-      "summary": "Use Internet Identity-only authentication and require a stored profile (Name + Email Address) to unlock Founders’ Vault; no password UI.",
-      "acceptanceCriteria": [
-        "Secure contact details are only revealed when the user is authenticated via Internet Identity and has completed a profile that includes a non-empty name and email address.",
-        "No password-based authentication UI or storage is implemented.",
-        "Profile capture UI includes a required Email Address field in addition to Name (stored in backend user profile)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/auth/ProfileSetupModal.tsx",
-          "operation": "modify",
-          "description": "Update the profile capture modal to include both Name and required Email Address fields and save both to the backend user profile (no password fields). Use the authorization system’s profile semantics; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/hooks/useCurrentUserProfile.ts",
-          "operation": "modify",
-          "description": "Ensure user profile hooks support saving and reading a profile with both name and email fields and correctly invalidate cached profile queries after save. Use the authorization system’s guidance for avoiding profile setup flash; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/connect/FoundersVault.tsx",
-          "operation": "modify",
-          "description": "Gate secure content on (a) Internet Identity authentication and (b) profile completeness (non-empty name and email), and ensure password-based UI is not introduced. Use the authorization system’s auth/profile checks; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/landing/ConnectGatewaySection.tsx",
-          "operation": "modify",
-          "description": "Remove the legacy behavior that redirects authenticated users directly to /admin; align login semantics with the public portal’s Connect & Support unlock flow (Internet Identity + profile completion). Use the authorization system’s login/logout semantics; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/layout/Header.tsx",
-          "operation": "modify",
-          "description": "Update the header’s Login/Connect control(s) to use Internet Identity semantics only (no password UI) and route users toward the Connect & Support unlock experience. Use the authorization system’s login/logout semantics; verify the component's usage instructions before implementing."
-        }
-      ]
-    },
-    {
-      "id": "REQ-20",
-      "summary": "Show the provided “Automated Network Access Email” content in-app after first-time unlock with a Copy action (no claim of sending).",
-      "acceptanceCriteria": [
-        "Upon first-time successful unlock (or immediately after profile completion if needed), the UI shows the full provided email subject and body text exactly, with a “Copy” action.",
-        "The UI does not claim that an email was actually sent; it presents it as an on-screen message that can be copied."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/connect/AccessGrantedEmailModal.tsx",
-          "operation": "create",
-          "description": "Create an in-app confirmation modal/screen that renders the provided email subject + body text exactly and provides a “Copy” action; ensure copy includes both subject and body and does not claim delivery."
-        },
-        {
-          "path": "frontend/src/components/connect/FoundersVault.tsx",
-          "operation": "modify",
-          "description": "Trigger the Access Granted email confirmation UI upon first-time successful unlock (or immediately after profile completion if required), using a local per-user flag to avoid repeatedly showing it on every visit."
-        }
-      ]
-    },
-    {
-      "id": "REQ-21",
-      "summary": "Reveal exact secure contact details in Founders’ Vault only after authentication + profile completion.",
-      "acceptanceCriteria": [
-        "When authenticated and profile-complete, the Founders’ Vault reveals all three contact lines exactly as specified.",
-        "When unauthenticated, the secure contact lines are not visible anywhere on the page (only the gating message and CTA are visible)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/connect/FoundersVault.tsx",
-          "operation": "modify",
-          "description": "Implement the unlocked view to reveal the secure contact lines exactly: Official Phone +91 7356824245, Official Email tactic.transmit@gmail.com, Instagram @tactic_transmit; ensure they are not rendered at all in the unauthenticated state."
-        }
-      ]
-    },
-    {
-      "id": "REQ-22",
-      "summary": "Create a Legal & Technical Docs area with Terms IP ownership statement and a Safety Audit presented as a signed document by Dejon and Johann.",
-      "acceptanceCriteria": [
-        "Users can navigate to Legal & Technical Docs from the site navigation (either directly or via a docs landing page).",
-        "Terms content includes a clear IP ownership statement naming Johann G. Thekkel, Joel Abraham, Dejon Justine, and Nandhukrishna Biju.",
-        "Safety Audit content is presented as a document-like page/section and includes visible signature blocks for Dejon and Johann (as text and/or signature images)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/LegalTechnicalDocsPage.tsx",
-          "operation": "modify",
-          "description": "Implement the Legal & Technical Docs page with clean, authoritative, text-heavy presentation; include Terms/IP ownership content and the Safety Audit document section."
-        },
-        {
-          "path": "frontend/src/pages/TermsOfServicePage.tsx",
-          "operation": "modify",
-          "description": "Update Terms of Service content to explicitly define IP ownership naming exactly: Johann G. Thekkel, Joel Abraham, Dejon Justine, and Nandhukrishna Biju."
-        },
-        {
-          "path": "frontend/public/assets/generated/sig-johann.dim_600x200.png",
-          "operation": "create",
-          "description": "Add the required generated signature asset and wire it into the Safety Audit signature block: frontend/public/assets/generated/sig-johann.dim_600x200.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/sig-dejon.dim_600x200.png",
-          "operation": "create",
-          "description": "Add the required generated signature asset and wire it into the Safety Audit signature block: frontend/public/assets/generated/sig-dejon.dim_600x200.png."
-        },
-        {
-          "path": "frontend/src/components/layout/Header.tsx",
-          "operation": "modify",
-          "description": "Ensure Legal & Technical Docs is reachable from site navigation without removing existing /terms and /privacy access."
-        }
-      ]
-    },
-    {
-      "id": "REQ-23",
-      "summary": "Update global navigation to include Home/Product/Board/Login/Connect and keep Terms/Privacy in the footer; ensure mobile hamburger works.",
-      "acceptanceCriteria": [
-        "Header navigation includes links for Home, Product, Board, and Login/Connect.",
-        "Footer retains working links to Terms of Service and Privacy Policy (existing pages).",
-        "Navigation works on both desktop and mobile (including hamburger menu behavior)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/layout/Header.tsx",
-          "operation": "modify",
-          "description": "Replace the current nav items with the blueprint intent: Home, Product, Board, and Login/Connect; ensure the mobile hamburger menu mirrors the same structure and closes on navigation."
-        },
-        {
-          "path": "frontend/src/components/layout/Footer.tsx",
-          "operation": "modify",
-          "description": "Keep Terms of Service and Privacy Policy links accessible in the footer and add clear public navigation links consistent with the blueprint’s footer navigation intent."
-        }
-      ]
-    },
-    {
-      "id": "REQ-24",
-      "summary": "Add explicit logout controls so authenticated users can clear Internet Identity session and return Home.",
-      "acceptanceCriteria": [
-        "When the user activates Logout, the Internet Identity session is cleared using the existing auth hook behavior and the UI returns the user to Home (/).",
-        "After logout, protected areas (Admin dashboard and Founders’ Vault details) are no longer accessible without logging in again."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/layout/Header.tsx",
-          "operation": "modify",
-          "description": "Add explicit Logout control(s) that call the existing Internet Identity clear behavior and then route to Home (/); ensure the UI reflects logged-out state."
-        },
-        {
-          "path": "frontend/src/components/connect/FoundersVault.tsx",
-          "operation": "modify",
-          "description": "Ensure the Founders’ Vault UI reacts to logout by immediately re-gating secure content and removing any unlocked details from view."
-        }
-      ]
-    },
-    {
-      "id": "REQ-25",
-      "summary": "Add public Home page contact details (email + Instagram) without revealing the secure phone line.",
-      "acceptanceCriteria": [
-        "Home page displays tactic.transmit@gmail.com and @tactic_transmit in a clearly readable section.",
-        "This public contact section does not reveal the secure phone line unless the user unlocks it in the Founders’ Vault."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/LandingPage.tsx",
-          "operation": "modify",
-          "description": "Add a clearly readable public contact section on Home that displays exactly tactic.transmit@gmail.com and @tactic_transmit, and ensure it does not show the secure phone line."
+          "description": "Replace the Home hero logo image source to use the shared logo constant pointing to /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg, removing the existing /assets/generated/tt-logo-user.dim_1600x1600.png reference."
         }
       ]
     }

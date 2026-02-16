@@ -76,7 +76,7 @@ export default function FoundersVault() {
 
             <div className="space-y-4">
               <div className="glass-panel p-4 rounded-xl border border-neon-blue/20 flex items-center gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-neon-blue/20 rounded-full flex items-center justify-center">
+                <div className="shrink-0 w-10 h-10 bg-neon-blue/20 rounded-full flex items-center justify-center">
                   <Phone className="w-5 h-5 text-neon-blue" />
                 </div>
                 <div>
@@ -86,7 +86,7 @@ export default function FoundersVault() {
               </div>
 
               <div className="glass-panel p-4 rounded-xl border border-neon-blue/20 flex items-center gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-neon-blue/20 rounded-full flex items-center justify-center">
+                <div className="shrink-0 w-10 h-10 bg-neon-blue/20 rounded-full flex items-center justify-center">
                   <Mail className="w-5 h-5 text-neon-blue" />
                 </div>
                 <div>
@@ -96,7 +96,7 @@ export default function FoundersVault() {
               </div>
 
               <div className="glass-panel p-4 rounded-xl border border-neon-blue/20 flex items-center gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-neon-blue/20 rounded-full flex items-center justify-center">
+                <div className="shrink-0 w-10 h-10 bg-neon-blue/20 rounded-full flex items-center justify-center">
                   <SiInstagram className="w-5 h-5 text-neon-blue" />
                 </div>
                 <div>

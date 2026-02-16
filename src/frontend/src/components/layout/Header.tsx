@@ -3,6 +3,7 @@ import { Menu, X, LogOut } from 'lucide-react';
 import { useState } from 'react';
 import { useInternetIdentity } from '../../hooks/useInternetIdentity';
 import { useQueryClient } from '@tanstack/react-query';
+import { LOGO_PATH } from '../../constants/brand';
 
 export default function Header() {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ export default function Header() {
         >
           <div className="relative w-12 h-12">
             <img
-              src="/assets/generated/tt-logo.dim_512x512.png"
+              src={LOGO_PATH}
               alt="TT Logo"
               className="w-full h-full object-contain pulse-logo"
             />

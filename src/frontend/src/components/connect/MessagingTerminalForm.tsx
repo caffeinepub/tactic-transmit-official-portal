@@ -58,7 +58,7 @@ export default function MessagingTerminalForm() {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-3 bg-black/30 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neon-blue transition-colors"
+              className="w-full px-4 py-3 bg-black/30 border border-white/20 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:border-neon-blue transition-colors"
               placeholder="Your name"
             />
           </div>
@@ -72,7 +72,7 @@ export default function MessagingTerminalForm() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 bg-black/30 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neon-blue transition-colors"
+              className="w-full px-4 py-3 bg-black/30 border border-white/20 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:border-neon-blue transition-colors"
               placeholder="your.email@example.com"
               required
             />
@@ -87,7 +87,7 @@ export default function MessagingTerminalForm() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               rows={6}
-              className="w-full px-4 py-3 bg-black/30 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neon-blue transition-colors resize-none"
+              className="w-full px-4 py-3 bg-black/30 border border-white/20 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:border-neon-blue transition-colors resize-none"
               placeholder="Your message..."
             />
           </div>

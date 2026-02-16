@@ -15,7 +15,7 @@ export default function PublicContactSection() {
             href="mailto:tactic.transmit@gmail.com"
             className="glass-panel-strong p-6 rounded-xl border border-white/10 hover:border-neon-blue/50 transition-all duration-300 flex items-center gap-4 group"
           >
-            <div className="flex-shrink-0 w-12 h-12 bg-neon-blue/20 rounded-full flex items-center justify-center group-hover:bg-neon-blue/30 transition-colors">
+            <div className="shrink-0 w-12 h-12 bg-neon-blue/20 rounded-full flex items-center justify-center group-hover:bg-neon-blue/30 transition-colors">
               <Mail className="w-6 h-6 text-neon-blue" />
             </div>
             <div>
@@ -30,7 +30,7 @@ export default function PublicContactSection() {
             rel="noopener noreferrer"
             className="glass-panel-strong p-6 rounded-xl border border-white/10 hover:border-neon-blue/50 transition-all duration-300 flex items-center gap-4 group"
           >
-            <div className="flex-shrink-0 w-12 h-12 bg-neon-blue/20 rounded-full flex items-center justify-center group-hover:bg-neon-blue/30 transition-colors">
+            <div className="shrink-0 w-12 h-12 bg-neon-blue/20 rounded-full flex items-center justify-center group-hover:bg-neon-blue/30 transition-colors">
               <SiInstagram className="w-6 h-6 text-neon-blue" />
             </div>
             <div>
