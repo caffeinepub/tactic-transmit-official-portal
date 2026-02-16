@@ -1,0 +1,24 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Make Hero headline responsive and safely wrapped within glass panel",
+  "requirements": [
+    {
+      "id": "REQ-12",
+      "summary": "Adjust only the Hero <h1> typography to be responsive and allow safe wrapping so it stays fully contained within the glass panel across screen sizes, without changing the headline text.",
+      "acceptanceCriteria": [
+        "On mobile widths (~320px), the hero headline “PRECISION. AUTOMATED.” stays fully inside the glass panel without horizontal overflow, clipping, or causing horizontal page scrolling.",
+        "On tablet/desktop widths, the headline remains visually prominent (large display type) and centered as before, with no regression in spacing relative to the subheadline.",
+        "Only the <h1> element styling/attributes are changed; surrounding container/panel structure and all other elements remain unchanged.",
+        "The headline text content remains exactly: “PRECISION. AUTOMATED.”"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/landing/HeroSection.tsx",
+          "operation": "modify",
+          "description": "Update only the Hero section <h1> element’s className to use responsive typography (e.g., clamp/arbitrary text size or additional breakpoint sizes), tighter/controlled line-height, and safe wrapping utilities (e.g., allow normal whitespace, word breaking, max width) so “PRECISION. AUTOMATED.” remains fully contained within the glass panel on small screens while staying prominent on larger screens. Ensure no other elements/structure or headline text are changed."
+        }
+      ]
+    }
+  ]
+}

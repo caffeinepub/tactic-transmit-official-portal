@@ -1,0 +1,24 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-update-only-the-selected-hero-headline-element-xpath-html-1-body-1-div-1-div-1-main-1-div-1-section-1-div-1-div-1-h1-1-so-the-h1-text-is-visually-contained-within-its-glass-panel-on-all-screen-sizes-no-overflow-cropping-by-making-the-typography-responsive-and-allowing-safe-wrapping-within-the-box-while-keeping-the-existing-headline-text-unchanged",
+      "featureTitle": "Update only the selected Hero headline element (XPath: /html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[1]/div[1]/div[1]/h1[1]) so the H1 text is visually contained within its glass panel on all screen sizes (no overflow/cropping), by making the typography responsive and allowing safe wrapping within the box while keeping the existing headline text unchanged.",
+      "files": [
+        "frontend/src/components/landing/HeroSection.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "Build the TACTIC TRANSMIT official portal website with a deep-tech glassmorphism visual style, product showcase for the TT-1 transmitter, executive board section, and an admin login gateway leading to a status dashboard (uptime/NTP), plus legal pages and system operational indicator.",
+  "architectural_notes": [
+    "Portal uses a deep-tech glassmorphism UI style with dark gradient background and animated/pulsing status indicators.",
+    "Admin access requires authentication before displaying operational metrics (uptime, NTP status).",
+    "Typography: use Orbitron and JetBrains Mono as the primary site fonts."
+  ],
+  "known_issues": [],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-create-a-public-marketing-landing-page-for-tactic-transmit-that-follows-the-specified-deep-tech-visual-identity-dark-charcoal-to-navy-gradient-background-glassmorphism-blurred-semi-transparent-panels-neon-blue-accent-pulses-and-a-circular-tt-logo-in-the-header-that-softly-pulses-to-indicate-system-vitality",
+      "title": "Create a public marketing landing page for “TACTIC TRANSMIT” that follows the specified deep-tech visual identity: dark charcoal-to-navy gradient background, glassmorphism (blurred semi-transparent panels), neon-blue accent pulses, and a circular “TT” logo in the header that softly pulses to indicate system vitality.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-hero-section-with-the-exact-english-headline-and-sub-headline-text-and-a-visually-animated-background-that-evokes-tt-1-circuitry-with-neon-blue-pulses-implemented-as-a-performant-non-blocking-animation-layer",
+      "title": "Implement the Hero section with the exact English headline and sub-headline text, and a visually animated background that evokes TT-1 circuitry with neon-blue pulses (implemented as a performant, non-blocking animation layer).",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-product-the-tt-1-transmitter-section-that-includes-a-prominent-3d-product-render-static-image-render-is-acceptable-and-a-spec-list-with-the-exact-four-spec-items-provided-esp-logic-hi-fi-dac-security-shield-sync-using-the-exact-english-phrasing",
+      "title": "Add a “Product: The TT-1 Transmitter” section that includes a prominent 3D product render (static image render is acceptable) and a spec list with the exact four spec items provided (ESP Logic, Hi‑Fi DAC, Security Shield, Sync), using the exact English phrasing.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-executive-board-section-as-a-clean-responsive-grid-showcasing-the-four-founders-with-their-names-and-roles-using-the-exact-english-text-provided",
+      "title": "Add an “Executive Board” section as a clean, responsive grid showcasing the four founders with their names and roles using the exact English text provided.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-connect-gateway-section-containing-a-login-panel-labeled-exactly-administrative-access-authentication-must-use-internet-identity-after-successful-sign-in-route-the-user-to-an-admin-dashboard-screen",
+      "title": "Implement a “Connect Gateway” section containing a login panel labeled exactly “ADMINISTRATIVE ACCESS”. Authentication must use Internet Identity. After successful sign-in, route the user to an admin dashboard screen.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-admin-dashboard-that-shows-1-live-uptime-and-2-ntp-status-sourced-from-backend-canister-apis-include-a-direct-line-to-the-team-for-schedule-updates-as-a-contact-module-displaying-contact-instructions-and-a-copy-to-clipboard-address-or-identifier-stored-in-backend-configuration",
+      "title": "Create an admin dashboard that shows (1) Live Uptime and (2) NTP Status, sourced from backend canister APIs. Include a “direct line to the team for schedule updates” as a contact module (displaying contact instructions and a copy-to-clipboard address or identifier stored in backend configuration).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-terms-of-service-and-privacy-policy-pages-and-link-them-from-the-site-footer-include-a-footer-status-indicator-that-reads-exactly-system-operational-with-a-green-indicator-light-style",
+      "title": "Add Terms of Service and Privacy Policy pages and link them from the site footer. Include a footer status indicator that reads exactly: “SYSTEM: OPERATIONAL.” with a green indicator light style.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-required-generated-static-images-to-the-frontend-and-render-them-in-the-ui-served-from-frontend-public-assets-generated-referenced-directly-by-the-frontend",
+      "title": "Add required generated static images to the frontend and render them in the UI (served from frontend/public/assets/generated, referenced directly by the frontend).",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-responsive-top-navigation-menu-to-the-existing-fixed-header-frontend-src-components-layout-header-tsx-that-provides-clear-navigation-to-the-existing-routes-home-admin-admin-terms-of-service-terms-and-privacy-policy-privacy-the-menu-must-work-on-both-desktop-and-mobile-e-g-collapse-into-a-hamburger-dropdown-on-small-screens-and-preserve-the-current-tt-logo-title-branding",
+      "title": "Add a responsive top navigation menu to the existing fixed header (frontend/src/components/layout/Header.tsx) that provides clear navigation to the existing routes: Home (/), Admin (/admin), Terms of Service (/terms), and Privacy Policy (/privacy). The menu must work on both desktop and mobile (e.g., collapse into a hamburger/dropdown on small screens) and preserve the current TT logo + title branding.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-site-wide-typography-to-use-orbitron-and-jetbrains-mono-fonts-orbitron-must-be-used-for-display-brand-typography-e-g-site-title-and-headings-and-jetbrains-mono-must-be-used-for-monospace-technical-text-and-optionally-body-text-if-appropriate-load-both-fonts-in-the-frontend-and-wire-them-into-tailwind-so-they-can-be-applied-consistently-across-pages",
+      "title": "Update site-wide typography to use Orbitron and JetBrains Mono fonts. Orbitron must be used for display/brand typography (e.g., site title and headings), and JetBrains Mono must be used for monospace/technical text (and optionally body text if appropriate). Load both fonts in the frontend and wire them into Tailwind so they can be applied consistently across pages.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-only-the-selected-hero-headline-element-xpath-html-1-body-1-div-1-div-1-main-1-div-1-section-1-div-1-div-1-h1-1-so-the-h1-text-is-visually-contained-within-its-glass-panel-on-all-screen-sizes-no-overflow-cropping-by-making-the-typography-responsive-and-allowing-safe-wrapping-within-the-box-while-keeping-the-existing-headline-text-unchanged",
+      "title": "Update only the selected Hero headline element (XPath: /html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[1]/div[1]/div[1]/h1[1]) so the H1 text is visually contained within its glass panel on all screen sizes (no overflow/cropping), by making the typography responsive and allowing safe wrapping within the box while keeping the existing headline text unchanged.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Implement deep-tech visual identity (dark charcoal/navy gradient, glassmorphism panels, pulsing circular TT logo in header)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Create hero section with headline/subheadline and animated looping background (TT-1 circuitry neon blue pulses)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Add product section featuring TT-1 Transmitter 3D render and key specs list (ESP logic, Hi-Fi DAC, Security Shield, NTP sync)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Build Executive Board grid showcasing founders with names and roles",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Implement Connect Gateway with secure admin login and post-auth dashboard showing Live Uptime, NTP Status, and contact/schedule update channel",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Add legal/footer sections including Terms of Service, Privacy Policy, and a 'SYSTEM: OPERATIONAL' status indicator",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Add backend administration controls with authorization: only approved admin principals can update dashboard status/config values (e.g., setting NTP status and contact info). Non-admin callers can read public status values but cannot modify them.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Add a site menu/navigation (header menu) to the public portal",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Update typography to use Orbitron and JetBrains Mono fonts across the site",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Ensure header/menu list links route correctly: Home -> / and each menu item navigates to its respective page (Product, Executive Board, Connect Gateway/Admin, Terms, Privacy)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-17",
+      "summary": "Add a Logout option (clears Internet Identity session and returns user to Home)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-18",
+      "summary": "Add a detailed 'About Us' section on the Home page",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-19",
+      "summary": "Add Contact details on the Home page including email (tactic.transmit@gmail.com) and Instagram (@tactic_transmit)",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "TACTIC TRANSMIT: Official Portal",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.625rem;
+        --background: 0.145 0 0;
+        --foreground: 0.985 0 0;
+        --card: 0.205 0 0;
+        --card-foreground: 0.985 0 0;
+        --popover: 0.269 0 0;
+        --popover-foreground: 0.985 0 0;
+        --primary: 0.922 0 0;
+        --primary-foreground: 0.205 0 0;
+        --secondary: 0.269 0 0;
+        --secondary-foreground: 0.985 0 0;
+        --muted: 0.269 0 0;
+        --muted-foreground: 0.708 0 0;
+        --accent: 0.371 0 0;
+        --accent-foreground: 0.985 0 0;
+        --destructive: 0.704 0.191 22.216;
+        --destructive-foreground: 0.205 0 0;
+        --border: 1 0 0 / 10%;
+        --input: 1 0 0 / 15%;
+        --ring: 0.556 0 0;
+        --chart-1: 0.488 0.243 264.376;
+        --chart-2: 0.696 0.17 162.48;
+        --chart-3: 0.769 0.188 70.08;
+        --chart-4: 0.627 0.265 303.9;
+        --chart-5: 0.645 0.246 16.439;
+        --sidebar: 0.205 0 0;
+        --sidebar-foreground: 0.985 0 0;
+        --sidebar-primary: 0.488 0.243 264.376;
+        --sidebar-primary-foreground: 0.985 0 0;
+        --sidebar-accent: 0.269 0 0;
+        --sidebar-accent-foreground: 0.985 0 0;
+        --sidebar-border: 1 0 0 / 10%;
+        --sidebar-ring: 0.439 0 0;
+        
+        /* Deep-Tech Custom Colors */
+        --neon-blue: 0.65 0.25 230;
+        --deep-charcoal: 0.15 0.02 240;
+        --deep-navy: 0.20 0.08 250;
+    }
+
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground font-sans;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-display;
+    }
+}
+
+@layer utilities {
+    /* Deep-Tech Gradient Background */
+    .deep-tech-gradient {
+        background: linear-gradient(
+            135deg,
+            oklch(var(--deep-charcoal)) 0%,
+            oklch(var(--deep-navy)) 50%,
+            oklch(var(--deep-charcoal)) 100%
+        );
+        background-attachment: fixed;
+    }
+
+    /* Glassmorphism Panels */
+    .glass-panel {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .glass-panel-light {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-panel-strong {
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Neon Blue Accent */
+    .text-neon-blue {
+        color: oklch(var(--neon-blue));
+    }
+
+    .bg-neon-blue {
+        background-color: oklch(var(--neon-blue));
+    }
+
+    .border-neon-blue {
+        border-color: oklch(var(--neon-blue));
+    }
+
+    /* Status Indicator */
+    .status-indicator-green {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #10b981;
+        box-shadow: 0 0 10px #10b981, 0 0 20px #10b981;
+        animation: pulse-green 2s ease-in-out infinite;
+    }
+
+    /* Logo Pulse Animation */
+    .pulse-logo {
+        animation: pulse-logo 3s ease-in-out infinite;
+    }
+}
+
+@keyframes pulse-logo {
+    0%, 100% {
+        opacity: 1;
+        filter: drop-shadow(0 0 8px oklch(var(--neon-blue) / 0.6));
+    }
+    50% {
+        opacity: 0.85;
+        filter: drop-shadow(0 0 15px oklch(var(--neon-blue) / 0.9));
+    }
+}
+
+@keyframes pulse-green {
+    0%, 100% {
+        box-shadow: 0 0 10px #10b981, 0 0 20px #10b981;
+    }
+    50% {
+        box-shadow: 0 0 15px #10b981, 0 0 30px #10b981, 0 0 40px #10b981;
+    }
+}

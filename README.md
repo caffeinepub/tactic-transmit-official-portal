@@ -1,2 +1,3 @@
-# tactic-transmit-official-portal
-Exported from Caffeine project: TACTIC TRANSMIT: Official Portal
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

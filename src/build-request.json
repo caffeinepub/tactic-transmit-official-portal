@@ -1,0 +1,41 @@
+{
+  "kind": "build_request",
+  "title": "Adjust hero headline to fit within the glass panel",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-12",
+      "text": "Update only the selected Hero headline element (XPath: /html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[1]/div[1]/div[1]/h1[1]) so the H1 text is visually contained within its glass panel on all screen sizes (no overflow/cropping), by making the typography responsive and allowing safe wrapping within the box while keeping the existing headline text unchanged.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-11"
+        ],
+        "quotes": [
+          "Move it into the box and fit it in the box",
+          "/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/section[1]/div[1]/div[1]/h1[1]"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On mobile widths (~320px), the hero headline “PRECISION. AUTOMATED.” stays fully inside the glass panel without horizontal overflow, clipping, or causing horizontal page scrolling.",
+        "On tablet/desktop widths, the headline remains visually prominent (large display type) and centered as before, with no regression in spacing relative to the subheadline.",
+        "Only the <h1> element styling/attributes are changed; surrounding container/panel structure and all other elements remain unchanged.",
+        "The headline text content remains exactly: “PRECISION. AUTOMATED.”"
+      ]
+    }
+  ],
+  "constraints": [
+    "Apply changes ONLY to the selected element (the Hero section <h1> at the provided XPath).",
+    "Do not modify any files under frontend/src/components/ui or other immutable paths.",
+    "Do not change the headline text copy; adjust only styling/fit behavior."
+  ],
+  "nonGoals": [
+    "No layout redesign of the Hero section or glass panel container.",
+    "No changes to routing, authentication, or backend canister APIs.",
+    "No new images or animations."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
