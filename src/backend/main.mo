@@ -106,7 +106,7 @@ actor {
   // Message Terminal functions
   // Open Architecture: accessible to all users including guests
   // No authentication required to submit messages
-  public func submitMessageTerminalEntry(from : Text, email : Text, message : Text) : async () {
+  public shared func submitMessageTerminalEntry(from : Text, email : Text, message : Text) : async () {
     let entry : MessageTerminalEntry = {
       from;
       email;

@@ -7,9 +7,9 @@ interface RequireAuthProps {
 }
 
 export default function RequireAuth({ children }: RequireAuthProps) {
-  const { identity, loginStatus } = useInternetIdentity();
+  const { identity, loginStatus, isInitializing } = useInternetIdentity();
 
-  if (loginStatus === 'initializing') {
+  if (isInitializing || loginStatus === 'logging-in') {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="glass-panel p-8 rounded-2xl">

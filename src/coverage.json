@@ -1,136 +1,82 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-17T14:08:32.260Z",
+  "generatedAt": "2026-02-17T14:16:59.516Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 10,
-    "implemented": 9,
+    "total": 5,
+    "implemented": 4,
     "items": [
       {
-        "id": "REQ-30",
-        "summary": "Update the global header navigation to match the “Open Architecture” menu items and labels: “Experience” (route /), “The TT-1 Hardware” (route /product), “Leadership” (route /board), “Achievements” (new route /achievements), and “Connect” (route /connect), while preserving the existing frosted-glass/glassmorphism header styling and the existing logo usage.",
+        "id": "REQ-40",
+        "summary": "Implement the currently-empty landing components so the portal includes all previously listed sections without placeholders: (1) CircuitryPulseBackground, (2) ProductSection, (3) ExecutiveBoardSection, and (4) ConnectGatewaySection.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/layout/Header.tsx"
+          "frontend/src/components/landing/CircuitryPulseBackground.tsx",
+          "frontend/src/components/landing/ProductSection.tsx",
+          "frontend/src/components/landing/ExecutiveBoardSection.tsx",
+          "frontend/src/components/landing/ConnectGatewaySection.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/layout/Header.tsx"
+          "frontend/src/components/landing/CircuitryPulseBackground.tsx",
+          "frontend/src/components/landing/ProductSection.tsx",
+          "frontend/src/components/landing/ExecutiveBoardSection.tsx",
+          "frontend/src/components/landing/ConnectGatewaySection.tsx"
         ]
       },
       {
-        "id": "REQ-31",
-        "summary": "Add a new Achievements page at route /achievements that presents a Microsoft-style Bento Grid (“Wall of Excellence”) with the four milestone tiles and exact English text provided in the masterplan.",
+        "id": "REQ-41",
+        "summary": "Update the Home page composition to include the rebuilt sections as part of the full feature set (in addition to the existing Hero, Welcome Narrative, Core Values, and Public Contact sections).",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/AchievementsPage.tsx",
-          "frontend/src/App.tsx"
+          "frontend/src/pages/LandingPage.tsx",
+          "frontend/src/components/landing/HeroSection.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/AchievementsPage.tsx",
-          "frontend/src/App.tsx"
+          "frontend/src/pages/LandingPage.tsx",
+          "frontend/src/components/landing/HeroSection.tsx"
         ]
       },
       {
-        "id": "REQ-32",
-        "summary": "Update the Connect page to remove the signup/login barrier: make all direct contact information immediately accessible (no Internet Identity authentication required) while keeping the Messaging Terminal form available publicly on the same page.",
+        "id": "REQ-42",
+        "summary": "Ensure the administrative login experience exists as a dedicated UI section labeled exactly “ADMINISTRATIVE ACCESS”, uses Internet Identity for authentication, and routes the user to /admin after successful sign-in (while keeping /admin protected by auth + admin checks).",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/ConnectSupportPage.tsx",
-          "frontend/src/components/connect/DirectContactRegistry.tsx"
+          "frontend/src/components/connect/AdminAdministrativeAccessPanel.tsx",
+          "frontend/src/components/landing/ConnectGatewaySection.tsx",
+          "frontend/src/components/routing/RequireAuth.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/ConnectSupportPage.tsx",
-          "frontend/src/components/connect/DirectContactRegistry.tsx"
+          "frontend/src/components/connect/AdminAdministrativeAccessPanel.tsx",
+          "frontend/src/components/landing/ConnectGatewaySection.tsx",
+          "frontend/src/components/routing/RequireAuth.tsx"
         ]
       },
       {
-        "id": "REQ-33",
-        "summary": "Update backend access control for contact information so that retrieving the public contact information no longer requires Internet Identity authentication or a completed user profile (Open Architecture). Keep admin-only capability to update contact info unchanged.",
+        "id": "REQ-43",
+        "summary": "Add the masterplan’s required static images into frontend/public/assets/generated and render them in the UI in a way consistent with the existing deep-tech/parallax styling (without serving images from the backend).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/tt1-assembly-hero-poster.dim_1920x1080.png",
+          "frontend/public/assets/generated/syncing-grid-tile.dim_512x512.png",
+          "frontend/src/components/landing/SyncingInfrastructureBackground.tsx",
+          "frontend/src/components/landing/ProductSection.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/tt1-assembly-hero-poster.dim_1920x1080.png",
+          "frontend/public/assets/generated/syncing-grid-tile.dim_512x512.png",
+          "frontend/src/components/landing/ProductSection.tsx"
+        ]
+      },
+      {
+        "id": "REQ-44",
+        "summary": "Confirm backend access control aligns with the full rebuild: public callers can read public status/contact values, while only approved admin principals can modify dashboard/config values (e.g., NTP status and contact info), and Messaging Terminal submissions continue to persist for admin retrieval.",
         "status": "unknown",
         "plannedFiles": [],
         "matchedFiles": []
-      },
-      {
-        "id": "REQ-34",
-        "summary": "Resolve the Messaging Terminal “send to tactic.transmit@gmail.com” requirement without external email delivery by implementing a user-visible delivery workflow: on successful submission, store the message in the backend (as currently) and present a clear on-screen option to send via the user’s email client (mailto:) to tactic.transmit@gmail.com with subject/body prefilled from the form, plus copy-to-clipboard for the composed message.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/connect/MessagingTerminalForm.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/connect/MessagingTerminalForm.tsx"
-        ]
-      },
-      {
-        "id": "REQ-35",
-        "summary": "Enhance the Home page (“Experience”) visual strategy to include a parallax scrolling feel and a subtle moving grid pattern background (“Syncing Infrastructure”) layered behind the existing hero content, while preserving the headline text exactly: “PRECISION. AUTOMATED. SYNCHRONIZED.”",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/public/assets/generated/syncing-grid-tile.dim_512x512.png",
-          "frontend/public/assets/generated/tt1-assembly-hero-poster.dim_1920x1080.png",
-          "frontend/src/components/landing/SyncingInfrastructureBackground.tsx",
-          "frontend/src/components/landing/HeroSection.tsx",
-          "frontend/src/index.css"
-        ],
-        "matchedFiles": [
-          "frontend/public/assets/generated/syncing-grid-tile.dim_512x512.png",
-          "frontend/public/assets/generated/tt1-assembly-hero-poster.dim_1920x1080.png",
-          "frontend/src/components/landing/SyncingInfrastructureBackground.tsx",
-          "frontend/src/components/landing/HeroSection.tsx",
-          "frontend/src/index.css"
-        ]
-      },
-      {
-        "id": "REQ-36",
-        "summary": "Add the “Mission” line to the Home page as English text: “Bridging the gap between legacy school systems and the digital future of ARS.” and ensure the Brand Voice quote by Nandhu Krishna Biju is present in English on the Home page.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/landing/WelcomeNarrativeSection.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/landing/WelcomeNarrativeSection.tsx"
-        ]
-      },
-      {
-        "id": "REQ-37",
-        "summary": "Update the Product Deep-Dive page (“The TT-1 Ecosystem”) to present the component breakdown using interactive, clickable 3D-style cards (Samsung-inspired) such that each component card can be clicked/tapped to reveal its detailed technical role text.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/product/Interactive3DComponentCard.tsx",
-          "frontend/src/pages/ProductDeepDivePage.tsx",
-          "frontend/src/index.css"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/product/Interactive3DComponentCard.tsx",
-          "frontend/src/pages/ProductDeepDivePage.tsx",
-          "frontend/src/index.css"
-        ]
-      },
-      {
-        "id": "REQ-38",
-        "summary": "Update the Leadership page content to match the “Leadership & Mentorship” roster and descriptions from the masterplan, including adding “Jeswin Miss | Chief Institutional Mentor” and ensuring “Nandhu Krishna Biju | Ad Handler & Brand Strategist” uses the exact name spelling. Keep the page text-forward with no photos/images for people.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/BoardPage.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/BoardPage.tsx"
-        ]
-      },
-      {
-        "id": "REQ-39",
-        "summary": "Update the global footer to match the Open Architecture navigation intent and status indicators: include footer links for Home, Technical Data, Achievements, and Terms of Service; display dual status indicators in English: “SYSTEM STATUS: ● OPERATIONAL” and “NETWORK: ● UNRESTRICTED”; and update the copyright line to: “© 2026 Tactic Transmit. All designs are the joint intellectual property of the Founders.”",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/layout/Footer.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/layout/Footer.tsx"
-        ]
       }
     ]
   },
@@ -142,20 +88,14 @@
     "frontend-implementation-plan.json",
     "frontend/public/assets/generated/syncing-grid-tile.dim_512x512.png",
     "frontend/public/assets/generated/tt1-assembly-hero-poster.dim_1920x1080.png",
-    "frontend/src/App.tsx",
-    "frontend/src/components/connect/DirectContactRegistry.tsx",
-    "frontend/src/components/connect/MessagingTerminalForm.tsx",
+    "frontend/src/components/connect/AdminAdministrativeAccessPanel.tsx",
+    "frontend/src/components/landing/CircuitryPulseBackground.tsx",
+    "frontend/src/components/landing/ConnectGatewaySection.tsx",
+    "frontend/src/components/landing/ExecutiveBoardSection.tsx",
     "frontend/src/components/landing/HeroSection.tsx",
-    "frontend/src/components/landing/SyncingInfrastructureBackground.tsx",
-    "frontend/src/components/landing/WelcomeNarrativeSection.tsx",
-    "frontend/src/components/layout/Footer.tsx",
-    "frontend/src/components/layout/Header.tsx",
-    "frontend/src/components/product/Interactive3DComponentCard.tsx",
-    "frontend/src/index.css",
-    "frontend/src/pages/AchievementsPage.tsx",
-    "frontend/src/pages/BoardPage.tsx",
-    "frontend/src/pages/ConnectSupportPage.tsx",
-    "frontend/src/pages/ProductDeepDivePage.tsx",
+    "frontend/src/components/landing/ProductSection.tsx",
+    "frontend/src/components/routing/RequireAuth.tsx",
+    "frontend/src/pages/LandingPage.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

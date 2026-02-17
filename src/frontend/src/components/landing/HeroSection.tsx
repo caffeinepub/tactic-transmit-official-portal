@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import SyncingInfrastructureBackground from './SyncingInfrastructureBackground';
+import CircuitryPulseBackground from './CircuitryPulseBackground';
 import DigitalClock from './DigitalClock';
 import { LOGO_PATH } from '../../constants/brand';
 
@@ -18,6 +19,7 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       <SyncingInfrastructureBackground />
+      <CircuitryPulseBackground />
 
       <div className="relative z-10 container mx-auto px-6 text-center">
         <div className="glass-panel-strong max-w-5xl mx-auto p-12 rounded-3xl">

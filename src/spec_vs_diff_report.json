@@ -1,32 +1,40 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-17T14:08:32.254Z",
-  "summary": "Most requested Open Architecture updates appear implemented: new /achievements route/page, public Connect page with direct contact registry, backend getContactInfo made public while admin updates remain restricted, Messaging Terminal post-submit mailto + copy workflow, home parallax/grid background, interactive product component cards, leadership roster update, and header/footer nav updates. Two notable gaps: Achievements tile text may not match the masterplan exact copy, and footer copyright is not the required fixed 2026 string (it is dynamic).",
+  "generatedAt": "2026-02-17T14:16:59.511Z",
+  "summary": "REQ-40/41/42 appear implemented via new/filled landing components, updated LandingPage composition, and an Internet Identity “ADMINISTRATIVE ACCESS” panel that navigates to /admin. REQ-44 backend access control changes are present for public reads and admin-only mutations plus message submission/retrieval. REQ-43 is only partially evidenced: the UI references the required poster image, but the diff does not show the required static image files being added under frontend/public/assets/generated, nor clear evidence of the required grid-tile background being used.",
   "missing_requirements": [
     {
-      "id": "REQ-31",
-      "requirement": "Achievements page must display the four milestone titles and descriptions exactly as provided in the masterplan (spelling and punctuation preserved).",
-      "reason": "The diff shows an Achievements tile set, but since the masterplan exact text is not present in the BuildRequest and the implemented strings are specific, there is no evidence they match the required exact provided copy.",
+      "id": "REQ-43",
+      "requirement": "Add the masterplan’s required static images into frontend/public/assets/generated (tt1-assembly-hero-poster.dim_1920x1080.png and syncing-grid-tile.dim_512x512.png) and render them in the UI (poster visible and grid tile used as a background layer), referenced directly via /assets/generated/....",
+      "reason": "The diff shows frontend components referencing the poster image path, but does not show the required image files being added to frontend/public/assets/generated, and does not provide evidence that the syncing grid tile pattern is used in any background layer.",
       "evidence": [
-        "frontend/src/pages/AchievementsPage.tsx"
-      ]
-    },
-    {
-      "id": "REQ-39",
-      "requirement": "Footer copyright line must match exactly: “© 2026 Tactic Transmit. All designs are the joint intellectual property of the Founders.”",
-      "reason": "Footer uses a dynamic year via `new Date().getFullYear()` and renders `© {currentYear} ...`, which will not always equal “© 2026 ...” exactly.",
-      "evidence": [
-        "frontend/src/components/layout/Footer.tsx"
+        "frontend/src/components/landing/ProductSection.tsx (references /assets/generated/tt1-assembly-hero-poster.dim_1920x1080.png)",
+        "No added/modified files shown under frontend/public/assets/generated in the diff summary",
+        "No diff evidence referencing /assets/generated/syncing-grid-tile.dim_512x512.png"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "Footer includes a “Built with ♥ using caffeine.ai” attribution block and tracking URL construction (utm params).",
-      "reason": "Not requested by any requirement; REQ-39 only specifies certain footer links, status indicators, and an exact copyright line.",
+      "description": "CircuitryPulseBackground loads an additional static image /assets/generated/tt1-circuitry-bg.dim_1920x1080.png that is not listed among the required masterplan images.",
+      "reason": "BuildRequest only requires tt1-assembly-hero-poster.dim_1920x1080.png and syncing-grid-tile.dim_512x512.png; the circuitry background asset is extra and may not exist under the constrained static assets directory.",
       "evidence": [
-        "frontend/src/components/layout/Footer.tsx"
+        "frontend/src/components/landing/CircuitryPulseBackground.tsx (circuitryImg.src = '/assets/generated/tt1-circuitry-bg.dim_1920x1080.png')"
+      ]
+    },
+    {
+      "description": "ProductSection references an additional image /assets/generated/tt1-transmitter-render.dim_1400x900.png that was not requested in REQ-43.",
+      "reason": "REQ-43 specifies only two required images; this introduces another asset dependency not mentioned in the request.",
+      "evidence": [
+        "frontend/src/components/landing/ProductSection.tsx (references /assets/generated/tt1-transmitter-render.dim_1400x900.png)"
+      ]
+    },
+    {
+      "description": "Backend user profile management APIs (getCallerUserProfile/getUserProfile/saveCallerUserProfile) were added/expanded beyond the access-control confirmation requested.",
+      "reason": "REQ-44 is focused on public reads for status/contact, admin-only mutations for dashboard/config, and persistence/retrieval of Messaging Terminal submissions; user profile CRUD is not requested.",
+      "evidence": [
+        "backend/main.mo (UserProfile type and profile query/shared methods shown in diff)"
       ]
     }
   ],
@@ -34,20 +42,14 @@
   "changed_files": [
     "backend/main.mo",
     "frontend-file-summaries.txt",
-    "frontend/src/App.tsx",
-    "frontend/src/components/connect/DirectContactRegistry.tsx",
-    "frontend/src/components/connect/MessagingTerminalForm.tsx",
+    "frontend/src/components/connect/AdminAdministrativeAccessPanel.tsx",
+    "frontend/src/components/landing/CircuitryPulseBackground.tsx",
+    "frontend/src/components/landing/ConnectGatewaySection.tsx",
+    "frontend/src/components/landing/ExecutiveBoardSection.tsx",
     "frontend/src/components/landing/HeroSection.tsx",
-    "frontend/src/components/landing/SyncingInfrastructureBackground.tsx",
-    "frontend/src/components/landing/WelcomeNarrativeSection.tsx",
-    "frontend/src/components/layout/Footer.tsx",
-    "frontend/src/components/layout/Header.tsx",
-    "frontend/src/components/product/Interactive3DComponentCard.tsx",
-    "frontend/src/index.css",
-    "frontend/src/pages/AchievementsPage.tsx",
-    "frontend/src/pages/BoardPage.tsx",
-    "frontend/src/pages/ConnectSupportPage.tsx",
-    "frontend/src/pages/ProductDeepDivePage.tsx",
+    "frontend/src/components/landing/ProductSection.tsx",
+    "frontend/src/components/routing/RequireAuth.tsx",
+    "frontend/src/pages/LandingPage.tsx",
     "project_state.json"
   ]
 }

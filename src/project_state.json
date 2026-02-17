@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 15,
+  "projectStateVersion": 17,
   "summary": "Adopt the final “Open Architecture” masterplan: multi-page portal with Apple/Samsung/Microsoft-inspired premium aesthetics (parallax + liquid-motion animations, interactive 3D product cards, Bento-grid Achievements). Remove the signup/login barrier for Connect/Founders’ Vault—make all contact info publicly accessible and route Messaging Terminal submissions directly to tactic.transmit@gmail.com, while keeping existing admin authentication/dashboard intact.",
   "architectural_notes": [
     "Portal uses a deep-tech glassmorphism UI style with dark gradient background and animated/pulsing status indicators.",
@@ -307,6 +307,38 @@
         "REQ-39"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-implement-the-currently-empty-landing-components-so-the-portal-includes-all-previously-listed-sections-without-placeholders-1-circuitrypulsebackground-2-productsection-3-executiveboardsection-and-4-connectgatewaysection",
+      "title": "Implement the currently-empty landing components so the portal includes all previously listed sections without placeholders: (1) CircuitryPulseBackground, (2) ProductSection, (3) ExecutiveBoardSection, and (4) ConnectGatewaySection.",
+      "reqIds": [
+        "REQ-40"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-home-page-composition-to-include-the-rebuilt-sections-as-part-of-the-full-feature-set-in-addition-to-the-existing-hero-welcome-narrative-core-values-and-public-contact-sections",
+      "title": "Update the Home page composition to include the rebuilt sections as part of the full feature set (in addition to the existing Hero, Welcome Narrative, Core Values, and Public Contact sections).",
+      "reqIds": [
+        "REQ-41"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-administrative-login-experience-exists-as-a-dedicated-ui-section-labeled-exactly-administrative-access-uses-internet-identity-for-authentication-and-routes-the-user-to-admin-after-successful-sign-in-while-keeping-admin-protected-by-auth-admin-checks",
+      "title": "Ensure the administrative login experience exists as a dedicated UI section labeled exactly “ADMINISTRATIVE ACCESS”, uses Internet Identity for authentication, and routes the user to /admin after successful sign-in (while keeping /admin protected by auth + admin checks).",
+      "reqIds": [
+        "REQ-42"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-masterplan-s-required-static-images-into-frontend-public-assets-generated-and-render-them-in-the-ui-in-a-way-consistent-with-the-existing-deep-tech-parallax-styling-without-serving-images-from-the-backend",
+      "title": "Add the masterplan’s required static images into frontend/public/assets/generated and render them in the UI in a way consistent with the existing deep-tech/parallax styling (without serving images from the backend).",
+      "reqIds": [
+        "REQ-43"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -475,6 +507,14 @@
       "summary": "Update backend access control for contact information so that retrieving the public contact information no longer requires Internet Identity authentication or a completed user profile (Open Architecture). Keep admin-only capability to update contact info unchanged.",
       "reqIds": [
         "REQ-33"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-43",
+      "summary": "Confirm backend access control aligns with the full rebuild: public callers can read public status/contact values, while only approved admin principals can modify dashboard/config values (e.g., NTP status and contact info), and Messaging Terminal submissions continue to persist for admin retrieval.",
+      "reqIds": [
+        "REQ-44"
       ],
       "status": "pending"
     }
