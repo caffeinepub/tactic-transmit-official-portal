@@ -1,67 +1,228 @@
 {
   "kind": "build_request",
-  "title": "Use only the uploaded logo across the portal",
-  "projectName": "TACTIC TRANSMIT",
+  "title": "Adopt Open Architecture masterplan: Achievements page, public Connect access, and premium parallax UI updates",
+  "projectName": "Tactic Transmit Portal",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-28",
-      "text": "Add the newly uploaded logo image file (SmartSelect_20260214-130511_WhatsApp-1.jpg) to the frontend static assets under frontend/public/assets/generated and treat it as the single source-of-truth logo asset.",
+      "id": "REQ-30",
+      "text": "Update the global header navigation to match the “Open Architecture” menu items and labels: “Experience” (route /), “The TT-1 Hardware” (route /product), “Leadership” (route /board), “Achievements” (new route /achievements), and “Connect” (route /connect), while preserving the existing frosted-glass/glassmorphism header styling and the existing logo usage.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-3"
+          "msg-7"
         ],
         "quotes": [
-          "Use the uploaded logo only"
+          "Menu Items: Experience | The TT-1 Hardware | Leadership | Achievements | Connect."
         ]
       },
       "acceptanceCriteria": [
-        "The file exists at frontend/public/assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg in the build output.",
-        "No additional derived/resized/generated logo files are required for runtime rendering."
+        "Header desktop and mobile menus show exactly: Experience, The TT-1 Hardware, Leadership, Achievements, Connect.",
+        "Each menu item navigates to its route: /, /product, /board, /achievements, /connect.",
+        "Existing logo path usage remains unchanged (LOGO_PATH).",
+        "Admin route (/admin) remains accessible via direct navigation (not required to be in the primary menu)."
       ]
     },
     {
-      "id": "REQ-29",
-      "text": "Update the public portal UI to use only /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg anywhere a TT/Tactic Transmit logo is rendered (including the fixed header brand mark and the Home hero logo), removing references to any other logo image filenames currently used.",
+      "id": "REQ-31",
+      "text": "Add a new Achievements page at route /achievements that presents a Microsoft-style Bento Grid (“Wall of Excellence”) with the four milestone tiles and exact English text provided in the masterplan.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-3"
+          "msg-7"
         ],
         "quotes": [
-          "Use the uploaded logo only"
+          "IV. THE ACHIEVEMENTS GRID: \"WALL OF EXCELLENCE\"",
+          "* ARS Alpha Deployment: Successful 100% automation of the prayer and period cycle.",
+          "* Zero-Drift Standard: Certified 30-day millisecond-perfect timing accuracy.",
+          "* Hi-Fi Integration: Achievement of crystal-clear 24-bit audio across all campus nodes.",
+          "* Dual-Core Optimization: Successful implementation of multi-threaded logic on the ESP32 platform."
         ]
       },
       "acceptanceCriteria": [
-        "Header logo renders from /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg.",
-        "Home hero logo renders from /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg.",
-        "A repo-wide search shows no remaining references to previous logo filenames (e.g., /assets/generated/tt-logo-user.dim_*.png or other TT logo renders).",
-        "The site renders without broken-image placeholders on all routes (Home, Product, Board, Connect, Admin, Terms, Privacy, Legal Docs)."
+        "Visiting /achievements renders a page with a prominent title “Wall of Excellence” (or “Achievements”) and a Bento grid layout of varying tile sizes.",
+        "The four tiles display exactly the provided milestone titles and descriptions (spelling and punctuation preserved).",
+        "The page is responsive (single column on small screens, multi-column bento layout on larger screens) and matches the site’s deep charcoal + neon blue accent styling."
+      ]
+    },
+    {
+      "id": "REQ-32",
+      "text": "Update the Connect page to remove the signup/login barrier: make all direct contact information immediately accessible (no Internet Identity authentication required) while keeping the Messaging Terminal form available publicly on the same page.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ],
+        "quotes": [
+          "This updated blueprint removes the signup barrier, making all contact information and professional details immediately accessible",
+          "Page 5: Connect (Direct Access)",
+          "No login required.",
+          "Direct Contact Registry: * Official Phone: +91 7356824245 * Official Email: tactic.transmit@gmail.com * Instagram: @tactic_transmit"
+        ]
+      },
+      "acceptanceCriteria": [
+        "/connect shows a public Messaging Terminal section and a public Direct Contact Registry section.",
+        "Direct Contact Registry displays: Official Phone: +91 7356824245; Official Email: tactic.transmit@gmail.com; Instagram: @tactic_transmit.",
+        "No login/signup CTA is required to view phone/email/Instagram on /connect.",
+        "Any Founders’ Vault “Restricted Access” gating UI is removed or replaced with a public presentation of the same contact details."
+      ]
+    },
+    {
+      "id": "REQ-33",
+      "text": "Update backend access control for contact information so that retrieving the public contact information no longer requires Internet Identity authentication or a completed user profile (Open Architecture). Keep admin-only capability to update contact info unchanged.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ],
+        "quotes": [
+          "This updated blueprint removes the signup barrier, making all contact information and professional details immediately accessible"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Unauthenticated callers can fetch contact information successfully without traps/errors.",
+        "Existing admin-only update function(s) for contact info remain restricted to admins.",
+        "Admin dashboard functionality continues to work as before (no regressions to uptime/NTP status APIs)."
+      ]
+    },
+    {
+      "id": "REQ-34",
+      "text": "Resolve the Messaging Terminal “send to tactic.transmit@gmail.com” requirement without external email delivery by implementing a user-visible delivery workflow: on successful submission, store the message in the backend (as currently) and present a clear on-screen option to send via the user’s email client (mailto:) to tactic.transmit@gmail.com with subject/body prefilled from the form, plus copy-to-clipboard for the composed message.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ],
+        "quotes": [
+          "Submissions go directly to tactic.transmit@gmail.com."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Submitting the Messaging Terminal form still persists the entry in the backend as it does today.",
+        "After successful submission, UI provides a mailto link targeting tactic.transmit@gmail.com with a prefilled subject and body derived from the submission.",
+        "UI also provides a copy-to-clipboard action for the composed email body (and subject if shown).",
+        "User-facing text is in English and does not claim that an email was sent automatically if the platform did not send one."
+      ]
+    },
+    {
+      "id": "REQ-35",
+      "text": "Enhance the Home page (“Experience”) visual strategy to include a parallax scrolling feel and a subtle moving grid pattern background (“Syncing Infrastructure”) layered behind the existing hero content, while preserving the headline text exactly: “PRECISION. AUTOMATED. SYNCHRONIZED.”",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ],
+        "quotes": [
+          "Visual Strategy: Uses a \"Parallax\" scrolling effect. The background consists of deep charcoal gradients with a subtle moving \"grid\" pattern, representing the \"Syncing Infrastructure.\"",
+          "The Headline: PRECISION. AUTOMATED. SYNCHRONIZED."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Home page includes a subtle animated/moving grid pattern over the deep charcoal gradient background.",
+        "Scrolling the home page produces a visible parallax effect between background layers and foreground sections (without harming readability).",
+        "The hero headline remains exactly “PRECISION. AUTOMATED. SYNCHRONIZED.” and remains fully visible on all screen sizes."
+      ]
+    },
+    {
+      "id": "REQ-36",
+      "text": "Add the “Mission” line to the Home page as English text: “Bridging the gap between legacy school systems and the digital future of ARS.” and ensure the Brand Voice quote by Nandhu Krishna Biju is present in English on the Home page.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ],
+        "quotes": [
+          "The Brand Voice: A bold section by Nandhu Krishna Biju: > \"At Tactic Transmit, we don't just measure time; we command it. We have engineered a standard where human error is obsolete, and institutional synchronization is absolute.\"",
+          "The Mission: \"Bridging the gap between legacy school systems and the digital future of ARS.\""
+        ]
+      },
+      "acceptanceCriteria": [
+        "Home page displays the provided Brand Voice quote in English and attributes it to Nandhu Krishna Biju (Brand Strategist) if attribution is shown.",
+        "Home page displays the Mission line exactly as provided.",
+        "Typography and layout match the premium glassmorphism/deep-tech style already used across the portal."
+      ]
+    },
+    {
+      "id": "REQ-37",
+      "text": "Update the Product Deep-Dive page (“The TT-1 Ecosystem”) to present the component breakdown using interactive, clickable 3D-style cards (Samsung-inspired) such that each component card can be clicked/tapped to reveal its detailed technical role text.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ],
+        "quotes": [
+          "Visual Strategy: Interactive 3D cards (Samsung Style). Users can click on components to see their specific technical roles."
+        ]
+      },
+      "acceptanceCriteria": [
+        "/product displays the four existing components as distinct interactive cards with a 3D/tilt/raised visual treatment.",
+        "Clicking/tapping a card reveals (expand/collapse, modal, or flip) the component’s detailed technical description text.",
+        "The four components covered are: ESP32 Dual-Core (240MHz), DS3231 High-Precision RTC, 24-bit Hi-Fi DAC, and 1kΩ Impedance Shield (matching the provided narrative).",
+        "The page remains responsive and readable; interactions work on both desktop and mobile."
+      ]
+    },
+    {
+      "id": "REQ-38",
+      "text": "Update the Leadership page content to match the “Leadership & Mentorship” roster and descriptions from the masterplan, including adding “Jeswin Miss | Chief Institutional Mentor” and ensuring “Nandhu Krishna Biju | Ad Handler & Brand Strategist” uses the exact name spelling. Keep the page text-forward with no photos/images for people.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ],
+        "quotes": [
+          "III. THE BOARD: \"LEADERSHIP & MENTORSHIP\"",
+          "* Jeswin Miss | Chief Institutional Mentor ...",
+          "* Johann G. Thekkel | Lead Architect ...",
+          "* Joel Abraham | Chief Designer ...",
+          "* Dejon Justine | Treasurer & Safety Auditor ...",
+          "* Nandhu Krishna Biju | Ad Handler & Brand Strategist ...",
+          "This updated blueprint removes the signup barrier, making all contact information and professional details immediately accessible"
+        ]
+      },
+      "acceptanceCriteria": [
+        "/board shows a text-forward list/grid of leadership profiles with no photos or AI-generated founder images.",
+        "The roster includes 5 entries: Jeswin Miss, Johann G. Thekkel, Joel Abraham, Dejon Justine, Nandhu Krishna Biju.",
+        "Each entry displays the provided role and an expanded description consistent with the masterplan content.",
+        "A hover-reveal effect is implemented for role details on pointer devices (and a sensible non-hover equivalent on mobile)."
+      ]
+    },
+    {
+      "id": "REQ-39",
+      "text": "Update the global footer to match the Open Architecture navigation intent and status indicators: include footer links for Home, Technical Data, Achievements, and Terms of Service; display dual status indicators in English: “SYSTEM STATUS: ● OPERATIONAL” and “NETWORK: ● UNRESTRICTED”; and update the copyright line to: “© 2026 Tactic Transmit. All designs are the joint intellectual property of the Founders.”",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ],
+        "quotes": [
+          "7. Footer\n[ Home ] | [ Technical Data ] | [ Achievements ] | [ Terms of Service ]\nSYSTEM STATUS: ● OPERATIONAL | NETWORK: ● UNRESTRICTED\n© 2026 Tactic Transmit. All designs are the joint intellectual property of the Founders."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Footer includes visible links labeled exactly: Home, Technical Data, Achievements, Terms of Service (with appropriate routes).",
+        "Footer shows both status labels: “SYSTEM STATUS: ● OPERATIONAL” and “NETWORK: ● UNRESTRICTED”.",
+        "Footer copyright text matches exactly: “© 2026 Tactic Transmit. All designs are the joint intellectual property of the Founders.”",
+        "Existing Terms and Privacy pages remain accessible from the footer area (they may be additional links beyond the specified four)."
       ]
     }
   ],
   "constraints": [
-    "Do not edit any files under frontend/src/components/ui or any paths listed in frontend.immutablePaths in SYSTEM_CONTEXT.",
-    "Keep the backend single-actor architecture unchanged; no backend changes are required for this request.",
-    "Use English for any user-facing text."
+    "Backend must remain a single Motoko actor in backend/main.mo; do not introduce additional backend services.",
+    "Do not edit frontend immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, and anything under frontend/src/components/ui.",
+    "Keep the existing /admin route protected by Internet Identity authentication and admin checks (no changes that weaken admin security).",
+    "No external email delivery integrations are allowed; any “send to gmail” behavior must be handled client-side (e.g., mailto/copy) while still storing submissions in the backend."
   ],
   "nonGoals": [
-    "Redesigning layout, typography, animations, or navigation behavior beyond what is necessary to swap the logo asset.",
-    "Creating or generating new logo variants (PNG/SVG) or additional sizes derived from the upload."
+    "Generating or hosting a real cinematic hardware video montage asset (implement UI support and fallbacks, but do not require real video production).",
+    "Implementing cryptographic “encrypted user accounts” beyond the existing Internet Identity model and IC canister storage guarantees.",
+    "Adding third-party email/SMS/notification services.",
+    "Changing the existing logo filename or introducing additional logo assets beyond the existing LOGO_PATH unless explicitly requested."
   ],
   "imageRequirements": {
-    "required": [],
+    "required": [
+      "Cinematic TT-1 assembly montage poster frame, dark high-contrast, premium product lighting (tt1-assembly-hero-poster.dim_1920x1080.png)",
+      "Subtle seamless technical grid pattern tile, deep charcoal lines with faint neon-blue highlights (syncing-grid-tile.dim_512x512.png)"
+    ],
     "edits": []
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
   }
 }

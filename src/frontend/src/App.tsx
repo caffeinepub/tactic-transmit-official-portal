@@ -7,6 +7,7 @@ import LegalTechnicalDocsPage from './pages/LegalTechnicalDocsPage';
 import AdminDashboardPage from './pages/AdminDashboardPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import AchievementsPage from './pages/AchievementsPage';
 import RequireAuth from './components/routing/RequireAuth';
 import RequireAdmin from './components/routing/RequireAdmin';
 import DeepTechLayout from './components/layout/DeepTechLayout';
@@ -41,6 +42,12 @@ const connectRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/connect',
   component: ConnectSupportPage,
+});
+
+const achievementsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/achievements',
+  component: AchievementsPage,
 });
 
 const legalRoute = createRoute({
@@ -78,6 +85,7 @@ const routeTree = rootRoute.addChildren([
   productRoute,
   boardRoute,
   connectRoute,
+  achievementsRoute,
   legalRoute,
   adminRoute,
   termsRoute,

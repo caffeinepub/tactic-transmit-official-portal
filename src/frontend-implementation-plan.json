@@ -1,47 +1,195 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Use only the uploaded logo across the portal",
+  "title": "Open Architecture masterplan UI updates (Achievements, public Connect, parallax home, 3D product cards, leadership + footer/nav)",
   "requirements": [
     {
-      "id": "REQ-28",
-      "summary": "Add the uploaded logo JPG as the single source-of-truth static logo asset in frontend public assets.",
+      "id": "REQ-30",
+      "summary": "Update global header navigation labels/items to the Open Architecture menu while preserving glassmorphism styling and existing LOGO_PATH usage.",
       "acceptanceCriteria": [
-        "The file exists at frontend/public/assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg in the build output.",
-        "No additional derived/resized/generated logo files are required for runtime rendering."
+        "Header desktop and mobile menus show exactly: Experience, The TT-1 Hardware, Leadership, Achievements, Connect.",
+        "Each menu item navigates to its route: /, /product, /board, /achievements, /connect.",
+        "Existing logo path usage remains unchanged (LOGO_PATH).",
+        "Admin route (/admin) remains accessible via direct navigation (not required to be in the primary menu)."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg",
-          "operation": "create",
-          "description": "Add/copy the uploaded logo image into the static assets folder so it is available at runtime as the single logo source-of-truth."
+          "path": "frontend/src/components/layout/Header.tsx",
+          "operation": "modify",
+          "description": "Replace existing navItems with the exact Open Architecture labels and routes (Experience->/, The TT-1 Hardware->/product, Leadership->/board, Achievements->/achievements, Connect->/connect) for both desktop and mobile menus; preserve existing glassmorphism classes and keep LOGO_PATH usage unchanged. Verify the component's usage instructions before implementing."
         }
       ]
     },
     {
-      "id": "REQ-29",
-      "summary": "Update all portal logo renders (header brand mark + Home hero logo) to reference only the uploaded logo JPG and remove references to prior logo filenames.",
+      "id": "REQ-31",
+      "summary": "Add /achievements page with a Microsoft-style Bento Grid “Wall of Excellence” containing the four milestone tiles with exact provided text.",
       "acceptanceCriteria": [
-        "Header logo renders from /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg.",
-        "Home hero logo renders from /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg.",
-        "A repo-wide search shows no remaining references to previous logo filenames (e.g., /assets/generated/tt-logo-user.dim_*.png or other TT logo renders).",
-        "The site renders without broken-image placeholders on all routes (Home, Product, Board, Connect, Admin, Terms, Privacy, Legal Docs)."
+        "Visiting /achievements renders a page with a prominent title “Wall of Excellence” (or “Achievements”) and a Bento grid layout of varying tile sizes.",
+        "The four tiles display exactly the provided milestone titles and descriptions (spelling and punctuation preserved).",
+        "The page is responsive (single column on small screens, multi-column bento layout on larger screens) and matches the site’s deep charcoal + neon blue accent styling."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/constants/brand.ts",
+          "path": "frontend/src/pages/AchievementsPage.tsx",
           "operation": "create",
-          "description": "Create a single exported constant for the portal logo path (use /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg) so all logo renders import from one place."
+          "description": "Create the Achievements page UI with a prominent “Wall of Excellence” heading and a responsive Bento grid (varying tile spans on larger breakpoints). Ensure the four tiles render exactly:\n- “ARS Alpha Deployment: Successful 100% automation of the prayer and period cycle.”\n- “Zero-Drift Standard: Certified 30-day millisecond-perfect timing accuracy.”\n- “Hi-Fi Integration: Achievement of crystal-clear 24-bit audio across all campus nodes.”\n- “Dual-Core Optimization: Successful implementation of multi-threaded logic on the ESP32 platform.”\nUse existing deep charcoal + neon-blue accent styling patterns. Verify the component's usage instructions before implementing."
         },
         {
-          "path": "frontend/src/components/layout/Header.tsx",
+          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Replace the header logo image source to use the shared logo constant pointing to /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg, removing the existing /assets/generated/tt-logo-user.dim_512x512.png reference."
+          "description": "Register the new /achievements route and wire it to AchievementsPage so it is reachable from navigation. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-32",
+      "summary": "Make /connect fully public by removing signup/login gating UI and presenting direct contact details alongside the public Messaging Terminal form.",
+      "acceptanceCriteria": [
+        "/connect shows a public Messaging Terminal section and a public Direct Contact Registry section.",
+        "Direct Contact Registry displays: Official Phone: +91 7356824245; Official Email: tactic.transmit@gmail.com; Instagram: @tactic_transmit.",
+        "No login/signup CTA is required to view phone/email/Instagram on /connect.",
+        "Any Founders’ Vault “Restricted Access” gating UI is removed or replaced with a public presentation of the same contact details."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ConnectSupportPage.tsx",
+          "operation": "modify",
+          "description": "Remove/replace the Founders’ Vault gated section so /connect always shows a public Direct Contact Registry (phone/email/Instagram) and the public Messaging Terminal on the same page; ensure no login/signup CTA is required to view contact details. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/connect/DirectContactRegistry.tsx",
+          "operation": "create",
+          "description": "Create a dedicated public Direct Contact Registry component that renders exactly:\n- Official Phone: +91 7356824245\n- Official Email: tactic.transmit@gmail.com\n- Instagram: @tactic_transmit\nMatch existing glassmorphism/deep-tech styling and ensure it is used by ConnectSupportPage. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-34",
+      "summary": "After Messaging Terminal submission, provide a user-visible delivery workflow (mailto + copy) without claiming automatic email delivery.",
+      "acceptanceCriteria": [
+        "Submitting the Messaging Terminal form still persists the entry in the backend as it does today.",
+        "After successful submission, UI provides a mailto link targeting tactic.transmit@gmail.com with a prefilled subject and body derived from the submission.",
+        "UI also provides a copy-to-clipboard action for the composed email body (and subject if shown).",
+        "User-facing text is in English and does not claim that an email was sent automatically if the platform did not send one."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/connect/MessagingTerminalForm.tsx",
+          "operation": "modify",
+          "description": "Update the success state UX: keep the existing backend submission call, but replace “Message Sent!”/auto-delivery wording with accurate English copy. After successful persistence, show (1) a mailto action to tactic.transmit@gmail.com with subject/body prefilled from the submitted name/email/message, and (2) a copy-to-clipboard action for the composed email content (include subject if displayed). Ensure the composed content remains available even after clearing inputs. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-35",
+      "summary": "Enhance Home (“Experience”) with a parallax scrolling feel and subtle animated moving grid background (“Syncing Infrastructure”) behind the existing hero content while preserving the exact headline text.",
+      "acceptanceCriteria": [
+        "Home page includes a subtle animated/moving grid pattern over the deep charcoal gradient background.",
+        "Scrolling the home page produces a visible parallax effect between background layers and foreground sections (without harming readability).",
+        "The hero headline remains exactly “PRECISION. AUTOMATED. SYNCHRONIZED.” and remains fully visible on all screen sizes."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/syncing-grid-tile.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated asset file for the subtle seamless technical grid pattern tile at exactly this path and filename so it can be referenced by the Home parallax background. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/public/assets/generated/tt1-assembly-hero-poster.dim_1920x1080.png",
+          "operation": "create",
+          "description": "Add the generated asset file for the cinematic TT-1 assembly montage poster frame at exactly this path and filename so it can be referenced by the Home hero background layers. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/landing/SyncingInfrastructureBackground.tsx",
+          "operation": "create",
+          "description": "Create a background layer component for the Home hero that combines: (a) deep charcoal gradient base, (b) a subtle animated repeating grid using frontend/public/assets/generated/syncing-grid-tile.dim_512x512.png, and (c) an optional cinematic poster layer using frontend/public/assets/generated/tt1-assembly-hero-poster.dim_1920x1080.png. Implement a scroll-driven parallax offset between layers while keeping foreground text readable. Verify the component's usage instructions before implementing."
         },
         {
           "path": "frontend/src/components/landing/HeroSection.tsx",
           "operation": "modify",
-          "description": "Replace the Home hero logo image source to use the shared logo constant pointing to /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg, removing the existing /assets/generated/tt-logo-user.dim_1600x1600.png reference."
+          "description": "Wire SyncingInfrastructureBackground behind existing hero content (keeping ParticleBackground if desired, but ensure readability), and preserve the headline text exactly: “PRECISION. AUTOMATED. SYNCHRONIZED.” Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add/adjust CSS animations/utilities needed for the moving grid pattern and parallax background layers (e.g., background-position animation and safe reduced-motion handling) while staying consistent with existing deep-tech theme styles. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-36",
+      "summary": "Add the Mission line and ensure the Brand Voice quote by Nandhu Krishna Biju appears in English on the Home page with premium deep-tech styling.",
+      "acceptanceCriteria": [
+        "Home page displays the provided Brand Voice quote in English and attributes it to Nandhu Krishna Biju (Brand Strategist) if attribution is shown.",
+        "Home page displays the Mission line exactly as provided.",
+        "Typography and layout match the premium glassmorphism/deep-tech style already used across the portal."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/landing/WelcomeNarrativeSection.tsx",
+          "operation": "modify",
+          "description": "Replace/update the Home narrative content to include:\n- Mission line exactly: “Bridging the gap between legacy school systems and the digital future of ARS.”\n- Brand Voice quote exactly: “At Tactic Transmit, we don't just measure time; we command it. We have engineered a standard where human error is obsolete, and institutional synchronization is absolute.”\nEnsure attribution uses the exact spelling “Nandhu Krishna Biju” and indicates Brand Strategist if attribution is shown. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-37",
+      "summary": "Update /product to show the TT-1 component breakdown as interactive, clickable 3D-style cards that reveal detailed technical role text.",
+      "acceptanceCriteria": [
+        "/product displays the four existing components as distinct interactive cards with a 3D/tilt/raised visual treatment.",
+        "Clicking/tapping a card reveals (expand/collapse, modal, or flip) the component’s detailed technical description text.",
+        "The four components covered are: ESP32 Dual-Core (240MHz), DS3231 High-Precision RTC, 24-bit Hi-Fi DAC, and 1kΩ Impedance Shield (matching the provided narrative).",
+        "The page remains responsive and readable; interactions work on both desktop and mobile."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/product/Interactive3DComponentCard.tsx",
+          "operation": "create",
+          "description": "Create a reusable interactive card component implementing a 3D/tilt/raised treatment and a click/tap reveal pattern (expand/collapse, flip, or modal) suitable for both pointer and touch devices. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/ProductDeepDivePage.tsx",
+          "operation": "modify",
+          "description": "Refactor /product to render four interactive 3D-style cards (using Interactive3DComponentCard) for: ESP32 Dual-Core (240MHz), DS3231 High-Precision RTC, 24-bit Hi-Fi DAC, and 1kΩ Impedance Shield; ensure each card reveals its detailed technical role text on click/tap and remains responsive. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add any additional CSS needed for 3D card perspective/tilt/reveal transitions (keeping within existing theme conventions and respecting reduced-motion where appropriate). Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-38",
+      "summary": "Update /board to match the Leadership & Mentorship roster (5 entries) with exact name spellings and add hover-reveal role details with mobile-friendly behavior; no people photos.",
+      "acceptanceCriteria": [
+        "/board shows a text-forward list/grid of leadership profiles with no photos or AI-generated founder images.",
+        "The roster includes 5 entries: Jeswin Miss, Johann G. Thekkel, Joel Abraham, Dejon Justine, Nandhu Krishna Biju.",
+        "Each entry displays the provided role and an expanded description consistent with the masterplan content.",
+        "A hover-reveal effect is implemented for role details on pointer devices (and a sensible non-hover equivalent on mobile)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/BoardPage.tsx",
+          "operation": "modify",
+          "description": "Update the leadership roster to exactly 5 text-only entries including “Jeswin Miss | Chief Institutional Mentor” and the exact spelling “Nandhu Krishna Biju | Ad Handler & Brand Strategist”. Implement a hover-reveal interaction for expanded details on pointer devices and a tap/expand alternative for mobile; keep the page text-forward with no photos. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-39",
+      "summary": "Update global footer links, dual status indicators, and copyright line to match Open Architecture intent while keeping Terms/Privacy accessible.",
+      "acceptanceCriteria": [
+        "Footer includes visible links labeled exactly: Home, Technical Data, Achievements, Terms of Service (with appropriate routes).",
+        "Footer shows both status labels: “SYSTEM STATUS: ● OPERATIONAL” and “NETWORK: ● UNRESTRICTED”.",
+        "Footer copyright text matches exactly: “© 2026 Tactic Transmit. All designs are the joint intellectual property of the Founders.”",
+        "Existing Terms and Privacy pages remain accessible from the footer area (they may be additional links beyond the specified four)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/layout/Footer.tsx",
+          "operation": "modify",
+          "description": "Replace footer primary link set to exactly: Home (/, label “Home”), Technical Data (route to existing technical/legal docs page, e.g. /legal, label “Technical Data”), Achievements (/achievements, label “Achievements”), Terms of Service (/terms, label “Terms of Service”). Add dual status indicators with exact English text: “SYSTEM STATUS: ● OPERATIONAL” and “NETWORK: ● UNRESTRICTED”. Update copyright line to exactly: “© 2026 Tactic Transmit. All designs are the joint intellectual property of the Founders.” Ensure existing Terms and Privacy remain accessible from the footer area (may be additional links). Verify the component's usage instructions before implementing."
         }
       ]
     }

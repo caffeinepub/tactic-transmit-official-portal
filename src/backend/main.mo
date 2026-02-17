@@ -8,12 +8,9 @@ import MixinAuthorization "authorization/MixinAuthorization";
 import AccessControl "authorization/access-control";
 import MixinStorage "blob-storage/Mixin";
 
-
-
 actor {
   include MixinStorage();
 
-  // Initialize the user system state
   let accessControlState = AccessControl.initState();
   include MixinAuthorization(accessControlState);
 
@@ -100,26 +97,15 @@ actor {
     dashboardStatus;
   };
 
-  public query ({ caller }) func getContactInfo() : async Text {
-    if (not (AccessControl.hasPermission(accessControlState, caller, #user))) {
-      Runtime.trap("Unauthorized: Must be authenticated with Internet Identity to access Founders' Vault");
-    };
-
-    switch (userProfiles.get(caller)) {
-      case null {
-        Runtime.trap("Unauthorized: Must have a complete user profile (name and email) to access Founders' Vault");
-      };
-      case (?profile) {
-        // Verify profile has both name and email (not empty)!
-        if (profile.name.size() == 0 or profile.email.size() == 0) {
-          Runtime.trap("Unauthorized: User profile must include both name and email address to access Founders' Vault");
-        };
-        contactInfo;
-      };
-    };
+  // Get contact info now always public (no auth/profile required)
+  // Open Architecture: accessible to all users including guests
+  public query func getContactInfo() : async Text {
+    contactInfo;
   };
 
   // Message Terminal functions
+  // Open Architecture: accessible to all users including guests
+  // No authentication required to submit messages
   public func submitMessageTerminalEntry(from : Text, email : Text, message : Text) : async () {
     let entry : MessageTerminalEntry = {
       from;
@@ -131,6 +117,7 @@ actor {
     nextMessageId += 1;
   };
 
+  // Admin-only: retrieving all message terminal entries
   public query ({ caller }) func getAllMessageTerminalEntries() : async [MessageTerminalEntry] {
     if (not (AccessControl.isAdmin(accessControlState, caller))) {
       Runtime.trap("Unauthorized: Only admins can retrieve message terminal entries");

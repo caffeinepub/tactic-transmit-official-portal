@@ -14,9 +14,10 @@ export default function Header() {
   const isAuthenticated = !!identity;
 
   const navItems = [
-    { label: 'Home', path: '/' },
-    { label: 'Product', path: '/product' },
-    { label: 'Board', path: '/board' },
+    { label: 'Experience', path: '/' },
+    { label: 'The TT-1 Hardware', path: '/product' },
+    { label: 'Leadership', path: '/board' },
+    { label: 'Achievements', path: '/achievements' },
     { label: 'Connect', path: '/connect' },
   ];
 

@@ -1,32 +1,34 @@
+import Interactive3DComponentCard from '../components/product/Interactive3DComponentCard';
+
 export default function ProductDeepDivePage() {
   const components = [
     {
-      name: 'ESP32-WROOM-32',
-      title: 'The Processing Core',
+      name: 'ESP32 Dual-Core (240MHz)',
+      title: 'The Brain',
       image: '/assets/generated/tt1-macro-esp32.dim_1400x900.png',
       description:
-        'Features an integrated Dual-Core Xtensa® 32-bit LX6 microprocessor. We utilize "Task Pinning" logic—one core handles the Wi-Fi stack and NTP time-fetching, while the second core runs the time-critical audio interrupts. This prevents the "system stutter" found in cheaper, single-core bell systems.',
+        'Utilizes "Task Pinning" logic. Core 0 manages the Wi-Fi/NTP cloud synchronization, while Core 1 handles real-time audio interrupts to ensure zero-latency bells.',
     },
     {
       name: 'DS3231 High-Precision RTC',
-      title: 'The Chronometric Heart',
+      title: 'The Heart',
       image: '/assets/generated/tt1-macro-ds3231.dim_1400x900.png',
       description:
-        'This module uses an Integrated Temperature-Compensated Crystal Oscillator (TCXO). Standard clocks drift as the room temperature changes; the TT-1 stays accurate within ±2 minutes per year, even in extreme conditions.',
+        'Includes a temperature-compensated crystal oscillator. This ensures that even in extreme heat or total power failure, the system time remains accurate to within ±2ppm.',
     },
     {
-      name: 'DFPlayer Mini (FN-M16P)',
-      title: 'The Auditory Engine',
+      name: '24-bit Hi-Fi DAC',
+      title: 'The Voice',
       image: '/assets/generated/tt1-macro-dfplayer.dim_1400x900.png',
       description:
-        'It decodes FAT16 and FAT32 file systems. By bypassing standard buzzing sounds and using a 24-bit DAC (Digital-to-Analog Converter), we achieve a Signal-to-Noise Ratio (SNR) of 85dB, providing studio-grade announcement quality.',
+        'The auditory engine features an 85dB Signal-to-Noise ratio, delivering studio-quality prayers and announcements directly to the school\'s PA system.',
     },
     {
-      name: '1kΩ Impedance Matching Resistors',
-      title: 'The Safety Manifold',
+      name: '1kΩ Impedance Shield',
+      title: 'The Safeguard',
       image: '/assets/generated/tt1-macro-protection.dim_1400x900.png',
       description:
-        'Engineered by Dejon Justine, this stage acts as a Galvanic-style isolation buffer. It matches the low-voltage output of the microcontroller to the high-impedance input of the campus amplifier, eliminating "Pop" noises and protecting the school\'s hardware from DC offset.',
+        'A custom safety manifold designed by Dejon Justine. This protective buffer prevents electrical feedback and ensures the longevity of expensive campus amplifiers.',
     },
   ];
 
@@ -45,46 +47,26 @@ export default function ProductDeepDivePage() {
 
       <div className="relative z-10 container mx-auto px-6 py-16">
         <div className="text-center mb-16">
+          <div className="inline-block px-4 py-2 bg-neon-blue/20 rounded-full mb-4">
+            <span className="text-neon-blue font-bold tracking-wider text-sm">
+              THE TT-1 ECOSYSTEM
+            </span>
+          </div>
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
             TT-1 Time Transmitter
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            The Hardware Ecosystem: A technical deep-dive into precision engineering
+            Interactive 3D component breakdown: Click to reveal technical specifications
           </p>
         </div>
 
         <div className="space-y-20">
           {components.map((component, index) => (
-            <div
+            <Interactive3DComponentCard
               key={index}
-              className={`flex flex-col ${
-                index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-              } gap-8 items-center`}
-            >
-              <div className="lg:w-1/2">
-                <div className="glass-panel-strong p-2 rounded-2xl border border-neon-blue/30">
-                  <img
-                    src={component.image}
-                    alt={component.name}
-                    className="w-full h-auto rounded-xl"
-                  />
-                </div>
-              </div>
-
-              <div className="lg:w-1/2 space-y-4">
-                <div className="inline-block px-4 py-2 bg-neon-blue/20 rounded-full mb-2">
-                  <span className="text-neon-blue font-bold tracking-wider text-sm">
-                    {component.title.toUpperCase()}
-                  </span>
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-white">
-                  {component.name}
-                </h2>
-                <p className="text-gray-300 text-lg leading-relaxed">
-                  {component.description}
-                </p>
-              </div>
-            </div>
+              {...component}
+              index={index}
+            />
           ))}
         </div>
       </div>

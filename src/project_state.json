@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 13,
-  "summary": "Update rebuild to use a user-supplied logo asset and avoid AI-generated founder images: Board/Executive Leadership should be text-forward (no founder portraits) with expanded written descriptions.",
+  "projectStateVersion": 15,
+  "summary": "Adopt the final “Open Architecture” masterplan: multi-page portal with Apple/Samsung/Microsoft-inspired premium aesthetics (parallax + liquid-motion animations, interactive 3D product cards, Bento-grid Achievements). Remove the signup/login barrier for Connect/Founders’ Vault—make all contact info publicly accessible and route Messaging Terminal submissions directly to tactic.transmit@gmail.com, while keeping existing admin authentication/dashboard intact.",
   "architectural_notes": [
     "Portal uses a deep-tech glassmorphism UI style with dark gradient background and animated/pulsing status indicators.",
     "Admin access requires authentication before displaying operational metrics (uptime, NTP status).",
@@ -11,12 +11,14 @@
     "Automated transactional email should be sent upon successful user registration to grant Tier 1 access to secure contact registry/docs.",
     "Use the user-provided logo asset for branding; do not rely on AI-generated logo renders if a source logo is provided.",
     "Do not use AI-generated founder portraits/headshots; Board page should be text-only with more detailed descriptions.",
-    "Branding constraint: use ONLY the user-uploaded logo asset across the site; do not use any AI-generated or other generated/placeholder logo renders."
+    "Branding constraint: use ONLY the user-uploaded logo asset across the site; do not use any AI-generated or other generated/placeholder logo renders.",
+    "Open architecture decision: remove signup/login barrier for Connect; make direct contact registry (phone/email/Instagram) publicly accessible."
   ],
   "known_issues": [
-    "Potential scope/auth conflict: existing requirement uses Internet Identity for authentication, but blueprint specifies a custom Name/Email/Password signup/login for gated secure contacts—requires reconciliation/decision."
+    "Scope conflict: earlier plan stated no external email delivery for contact form submissions, but latest masterplan requires Messaging Terminal submissions go directly to tactic.transmit@gmail.com—needs decision/implementation approach."
   ],
   "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Cinematic TT-1 assembly montage poster frame, dark high-contrast, premium product lighting (tt1-assembly-hero-poster.dim_1920x1080.png)\n- Subtle seamless technical grid pattern tile, deep charcoal lines with faint neon-blue highlights (syncing-grid-tile.dim_512x512.png)",
   "existing_features": [
     {
       "id": "feature-create-a-public-marketing-landing-page-for-tactic-transmit-that-follows-the-specified-deep-tech-visual-identity-dark-charcoal-to-navy-gradient-background-glassmorphism-blurred-semi-transparent-panels-neon-blue-accent-pulses-and-a-circular-tt-logo-in-the-header-that-softly-pulses-to-indicate-system-vitality",
@@ -233,6 +235,78 @@
         "REQ-29"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-update-the-global-header-navigation-to-match-the-open-architecture-menu-items-and-labels-experience-route-the-tt-1-hardware-route-product-leadership-route-board-achievements-new-route-achievements-and-connect-route-connect-while-preserving-the-existing-frosted-glass-glassmorphism-header-styling-and-the-existing-logo-usage",
+      "title": "Update the global header navigation to match the “Open Architecture” menu items and labels: “Experience” (route /), “The TT-1 Hardware” (route /product), “Leadership” (route /board), “Achievements” (new route /achievements), and “Connect” (route /connect), while preserving the existing frosted-glass/glassmorphism header styling and the existing logo usage.",
+      "reqIds": [
+        "REQ-30"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-achievements-page-at-route-achievements-that-presents-a-microsoft-style-bento-grid-wall-of-excellence-with-the-four-milestone-tiles-and-exact-english-text-provided-in-the-masterplan",
+      "title": "Add a new Achievements page at route /achievements that presents a Microsoft-style Bento Grid (“Wall of Excellence”) with the four milestone tiles and exact English text provided in the masterplan.",
+      "reqIds": [
+        "REQ-31"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-connect-page-to-remove-the-signup-login-barrier-make-all-direct-contact-information-immediately-accessible-no-internet-identity-authentication-required-while-keeping-the-messaging-terminal-form-available-publicly-on-the-same-page",
+      "title": "Update the Connect page to remove the signup/login barrier: make all direct contact information immediately accessible (no Internet Identity authentication required) while keeping the Messaging Terminal form available publicly on the same page.",
+      "reqIds": [
+        "REQ-32"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-resolve-the-messaging-terminal-send-to-tactic-transmit-gmail-com-requirement-without-external-email-delivery-by-implementing-a-user-visible-delivery-workflow-on-successful-submission-store-the-message-in-the-backend-as-currently-and-present-a-clear-on-screen-option-to-send-via-the-user-s-email-client-mailto-to-tactic-transmit-gmail-com-with-subject-body-prefilled-from-the-form-plus-copy-to-clipboard-for-the-composed-message",
+      "title": "Resolve the Messaging Terminal “send to tactic.transmit@gmail.com” requirement without external email delivery by implementing a user-visible delivery workflow: on successful submission, store the message in the backend (as currently) and present a clear on-screen option to send via the user’s email client (mailto:) to tactic.transmit@gmail.com with subject/body prefilled from the form, plus copy-to-clipboard for the composed message.",
+      "reqIds": [
+        "REQ-34"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-enhance-the-home-page-experience-visual-strategy-to-include-a-parallax-scrolling-feel-and-a-subtle-moving-grid-pattern-background-syncing-infrastructure-layered-behind-the-existing-hero-content-while-preserving-the-headline-text-exactly-precision-automated-synchronized",
+      "title": "Enhance the Home page (“Experience”) visual strategy to include a parallax scrolling feel and a subtle moving grid pattern background (“Syncing Infrastructure”) layered behind the existing hero content, while preserving the headline text exactly: “PRECISION. AUTOMATED. SYNCHRONIZED.”",
+      "reqIds": [
+        "REQ-35"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-mission-line-to-the-home-page-as-english-text-bridging-the-gap-between-legacy-school-systems-and-the-digital-future-of-ars-and-ensure-the-brand-voice-quote-by-nandhu-krishna-biju-is-present-in-english-on-the-home-page",
+      "title": "Add the “Mission” line to the Home page as English text: “Bridging the gap between legacy school systems and the digital future of ARS.” and ensure the Brand Voice quote by Nandhu Krishna Biju is present in English on the Home page.",
+      "reqIds": [
+        "REQ-36"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-product-deep-dive-page-the-tt-1-ecosystem-to-present-the-component-breakdown-using-interactive-clickable-3d-style-cards-samsung-inspired-such-that-each-component-card-can-be-clicked-tapped-to-reveal-its-detailed-technical-role-text",
+      "title": "Update the Product Deep-Dive page (“The TT-1 Ecosystem”) to present the component breakdown using interactive, clickable 3D-style cards (Samsung-inspired) such that each component card can be clicked/tapped to reveal its detailed technical role text.",
+      "reqIds": [
+        "REQ-37"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-leadership-page-content-to-match-the-leadership-mentorship-roster-and-descriptions-from-the-masterplan-including-adding-jeswin-miss-chief-institutional-mentor-and-ensuring-nandhu-krishna-biju-ad-handler-brand-strategist-uses-the-exact-name-spelling-keep-the-page-text-forward-with-no-photos-images-for-people",
+      "title": "Update the Leadership page content to match the “Leadership & Mentorship” roster and descriptions from the masterplan, including adding “Jeswin Miss | Chief Institutional Mentor” and ensuring “Nandhu Krishna Biju | Ad Handler & Brand Strategist” uses the exact name spelling. Keep the page text-forward with no photos/images for people.",
+      "reqIds": [
+        "REQ-38"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-global-footer-to-match-the-open-architecture-navigation-intent-and-status-indicators-include-footer-links-for-home-technical-data-achievements-and-terms-of-service-display-dual-status-indicators-in-english-system-status-operational-and-network-unrestricted-and-update-the-copyright-line-to-2026-tactic-transmit-all-designs-are-the-joint-intellectual-property-of-the-founders",
+      "title": "Update the global footer to match the Open Architecture navigation intent and status indicators: include footer links for Home, Technical Data, Achievements, and Terms of Service; display dual status indicators in English: “SYSTEM STATUS: ● OPERATIONAL” and “NETWORK: ● UNRESTRICTED”; and update the copyright line to: “© 2026 Tactic Transmit. All designs are the joint intellectual property of the Founders.”",
+      "reqIds": [
+        "REQ-39"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -341,18 +415,6 @@
       "status": "pending"
     },
     {
-      "id": "AR-24",
-      "summary": "Secure 'Founders’ Vault': implement signup/login (Name/Email/Password) and gate secure contact details until authenticated; after login reveal phone/email/Instagram",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-25",
-      "summary": "Automated 'Network Access' welcome email triggered upon user registration for secure access (use provided subject/body and include verified founder contact lines)",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
       "id": "AR-26",
       "summary": "Legal & Technical Docs: add/expand Terms of Service (IP ownership for the four founders) and add a Safety Audit document page/section signed by Dejon and Johann",
       "reqIds": [],
@@ -381,6 +443,38 @@
       "summary": "Add the newly uploaded logo image file (SmartSelect_20260214-130511_WhatsApp-1.jpg) to the frontend static assets under frontend/public/assets/generated and treat it as the single source-of-truth logo asset.",
       "reqIds": [
         "REQ-28"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-31",
+      "summary": "Add an Achievements page/section (“Wall of Excellence”) using a Microsoft-style Bento grid of milestone tiles",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-32",
+      "summary": "Update Home page experience to include parallax scrolling, subtle moving grid background, and a cinematic TT‑1 hardware video/montage hero",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-33",
+      "summary": "Implement Product Deep‑Dive as interactive 3D cards/modules (clickable components revealing technical roles)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-34",
+      "summary": "Update global nav/footer to include Achievements and show dual status indicators (e.g., SYSTEM OPERATIONAL + NETWORK ENCRYPTED/UNRESTRICTED)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-38",
+      "summary": "Update backend access control for contact information so that retrieving the public contact information no longer requires Internet Identity authentication or a completed user profile (Open Architecture). Keep admin-only capability to update contact info unchanged.",
+      "reqIds": [
+        "REQ-33"
       ],
       "status": "pending"
     }

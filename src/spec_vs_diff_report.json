@@ -1,43 +1,53 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-16T17:48:42.784Z",
-  "summary": "REQ-29 is partially implemented by updating the Header and Home Hero to use a shared LOGO_PATH constant pointing at the uploaded JPG. REQ-28 is not evidenced because the actual JPG asset under frontend/public/assets/generated is not shown as added. The diff also does not provide enough evidence that all other previous logo references across the repo were removed.",
+  "generatedAt": "2026-02-17T14:08:32.254Z",
+  "summary": "Most requested Open Architecture updates appear implemented: new /achievements route/page, public Connect page with direct contact registry, backend getContactInfo made public while admin updates remain restricted, Messaging Terminal post-submit mailto + copy workflow, home parallax/grid background, interactive product component cards, leadership roster update, and header/footer nav updates. Two notable gaps: Achievements tile text may not match the masterplan exact copy, and footer copyright is not the required fixed 2026 string (it is dynamic).",
   "missing_requirements": [
     {
-      "id": "REQ-28",
-      "requirement": "Add the newly uploaded logo image file (SmartSelect_20260214-130511_WhatsApp-1.jpg) under frontend/public/assets/generated as the single source-of-truth logo asset.",
-      "reason": "The diff does not show the image file being added to frontend/public/assets/generated; only a TypeScript constant referencing the path was added.",
+      "id": "REQ-31",
+      "requirement": "Achievements page must display the four milestone titles and descriptions exactly as provided in the masterplan (spelling and punctuation preserved).",
+      "reason": "The diff shows an Achievements tile set, but since the masterplan exact text is not present in the BuildRequest and the implemented strings are specific, there is no evidence they match the required exact provided copy.",
       "evidence": [
-        "frontend/src/constants/brand.ts"
+        "frontend/src/pages/AchievementsPage.tsx"
       ]
     },
     {
-      "id": "REQ-29",
-      "requirement": "Remove references to any other logo image filenames currently used repo-wide, ensuring all TT/Tactic Transmit logos render from /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg and no routes show broken images.",
-      "reason": "Only Header and HeroSection are shown updated; there is no evidence of repo-wide removal of old logo filename references or verification across all listed routes/pages.",
+      "id": "REQ-39",
+      "requirement": "Footer copyright line must match exactly: “© 2026 Tactic Transmit. All designs are the joint intellectual property of the Founders.”",
+      "reason": "Footer uses a dynamic year via `new Date().getFullYear()` and renders `© {currentYear} ...`, which will not always equal “© 2026 ...” exactly.",
       "evidence": [
-        "frontend/src/components/layout/Header.tsx",
-        "frontend/src/components/landing/HeroSection.tsx",
-        "frontend-file-summaries.txt (truncated)"
+        "frontend/src/components/layout/Footer.tsx"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "Introduced a new brand constants module (LOGO_PATH) as a centralized source-of-truth for the logo path.",
-      "reason": "The BuildRequest asks to add an image asset and update UI references; it does not explicitly request creation of a new constants file/module.",
+      "description": "Footer includes a “Built with ♥ using caffeine.ai” attribution block and tracking URL construction (utm params).",
+      "reason": "Not requested by any requirement; REQ-39 only specifies certain footer links, status indicators, and an exact copyright line.",
       "evidence": [
-        "frontend/src/constants/brand.ts"
+        "frontend/src/components/layout/Footer.tsx"
       ]
     }
   ],
   "confidence": 0.74,
   "changed_files": [
+    "backend/main.mo",
     "frontend-file-summaries.txt",
+    "frontend/src/App.tsx",
+    "frontend/src/components/connect/DirectContactRegistry.tsx",
+    "frontend/src/components/connect/MessagingTerminalForm.tsx",
     "frontend/src/components/landing/HeroSection.tsx",
+    "frontend/src/components/landing/SyncingInfrastructureBackground.tsx",
+    "frontend/src/components/landing/WelcomeNarrativeSection.tsx",
+    "frontend/src/components/layout/Footer.tsx",
     "frontend/src/components/layout/Header.tsx",
-    "frontend/src/constants/brand.ts",
+    "frontend/src/components/product/Interactive3DComponentCard.tsx",
+    "frontend/src/index.css",
+    "frontend/src/pages/AchievementsPage.tsx",
+    "frontend/src/pages/BoardPage.tsx",
+    "frontend/src/pages/ConnectSupportPage.tsx",
+    "frontend/src/pages/ProductDeepDivePage.tsx",
     "project_state.json"
   ]
 }

@@ -137,6 +137,40 @@
             filter: drop-shadow(0 0 10px oklch(var(--neon-blue) / 0.5));
         }
     }
+
+    /* Syncing Grid Background Animation */
+    .syncing-grid-background {
+        animation: grid-move 20s linear infinite;
+    }
+
+    @keyframes grid-move {
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: 512px 512px;
+        }
+    }
+
+    /* Interactive 3D Card Effects */
+    .interactive-3d-card {
+        perspective: 1000px;
+        transform-style: preserve-3d;
+    }
+
+    .interactive-3d-card:hover {
+        transform: rotateY(2deg) rotateX(-2deg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .syncing-grid-background {
+            animation: none;
+        }
+        
+        .interactive-3d-card:hover {
+            transform: scale(1.05);
+        }
+    }
 }
 
 @keyframes pulse-logo {

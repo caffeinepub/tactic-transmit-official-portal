@@ -14,13 +14,17 @@ export default function WelcomeNarrativeSection() {
         </div>
 
         <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
-          <p>
-            Tactic Transmit is the bridge between institutional chaos and chronometric order. We
-            provide the heartbeat that keeps ARS running perfectly.
+          <p className="text-xl italic border-l-4 border-neon-blue pl-6">
+            "At Tactic Transmit, we don't just measure time; we command it. We have engineered a standard where human error is obsolete, and institutional synchronization is absolute."
           </p>
-          <p className="text-right text-sm text-gray-400 italic">
-            — Nandhukrishna Biju, Brand Strategist
+          <p className="text-right text-sm text-gray-400">
+            — Nandhu Krishna Biju, Brand Strategist
           </p>
+          <div className="pt-6 mt-6 border-t border-white/10">
+            <p className="text-center text-xl font-semibold text-white">
+              Bridging the gap between legacy school systems and the digital future of ARS.
+            </p>
+          </div>
         </div>
       </div>
     </section>

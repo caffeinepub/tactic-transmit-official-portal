@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import ParticleBackground from './ParticleBackground';
+import SyncingInfrastructureBackground from './SyncingInfrastructureBackground';
 import DigitalClock from './DigitalClock';
 import { LOGO_PATH } from '../../constants/brand';
 
@@ -17,7 +17,7 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      <ParticleBackground />
+      <SyncingInfrastructureBackground />
 
       <div className="relative z-10 container mx-auto px-6 text-center">
         <div className="glass-panel-strong max-w-5xl mx-auto p-12 rounded-3xl">

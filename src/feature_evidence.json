@@ -2,12 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-public-portal-ui-to-use-only-assets-generated-smartselect-20260214-130511-whatsapp-1-jpg-anywhere-a-tt-tactic-transmit-logo-is-rendered-including-the-fixed-header-brand-mark-and-the-home-hero-logo-removing-references-to-any-other-logo-image-filenames-currently-used",
-      "featureTitle": "Update the public portal UI to use only /assets/generated/SmartSelect_20260214-130511_WhatsApp-1.jpg anywhere a TT/Tactic Transmit logo is rendered (including the fixed header brand mark and the Home hero logo), removing references to any other logo image filenames currently used.",
+      "featureId": "feature-update-the-global-header-navigation-to-match-the-open-architecture-menu-items-and-labels-experience-route-the-tt-1-hardware-route-product-leadership-route-board-achievements-new-route-achievements-and-connect-route-connect-while-preserving-the-existing-frosted-glass-glassmorphism-header-styling-and-the-existing-logo-usage",
+      "featureTitle": "Update the global header navigation to match the “Open Architecture” menu items and labels: “Experience” (route /), “The TT-1 Hardware” (route /product), “Leadership” (route /board), “Achievements” (new route /achievements), and “Connect” (route /connect), while preserving the existing frosted-glass/glassmorphism header styling and the existing logo usage.",
       "files": [
-        "frontend/src/components/landing/HeroSection.tsx",
-        "frontend/src/components/layout/Header.tsx",
-        "frontend/src/constants/brand.ts"
+        "frontend/src/components/layout/Header.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -19,7 +17,173 @@
         "blob-storage@4.0.0"
       ],
       "testIds": [
-        "REQ-29"
+        "REQ-30"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-new-achievements-page-at-route-achievements-that-presents-a-microsoft-style-bento-grid-wall-of-excellence-with-the-four-milestone-tiles-and-exact-english-text-provided-in-the-masterplan",
+      "featureTitle": "Add a new Achievements page at route /achievements that presents a Microsoft-style Bento Grid (“Wall of Excellence”) with the four milestone tiles and exact English text provided in the masterplan.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/AchievementsPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-31"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-connect-page-to-remove-the-signup-login-barrier-make-all-direct-contact-information-immediately-accessible-no-internet-identity-authentication-required-while-keeping-the-messaging-terminal-form-available-publicly-on-the-same-page",
+      "featureTitle": "Update the Connect page to remove the signup/login barrier: make all direct contact information immediately accessible (no Internet Identity authentication required) while keeping the Messaging Terminal form available publicly on the same page.",
+      "files": [
+        "frontend/src/components/connect/DirectContactRegistry.tsx",
+        "frontend/src/pages/ConnectSupportPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-32"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-resolve-the-messaging-terminal-send-to-tactic-transmit-gmail-com-requirement-without-external-email-delivery-by-implementing-a-user-visible-delivery-workflow-on-successful-submission-store-the-message-in-the-backend-as-currently-and-present-a-clear-on-screen-option-to-send-via-the-user-s-email-client-mailto-to-tactic-transmit-gmail-com-with-subject-body-prefilled-from-the-form-plus-copy-to-clipboard-for-the-composed-message",
+      "featureTitle": "Resolve the Messaging Terminal “send to tactic.transmit@gmail.com” requirement without external email delivery by implementing a user-visible delivery workflow: on successful submission, store the message in the backend (as currently) and present a clear on-screen option to send via the user’s email client (mailto:) to tactic.transmit@gmail.com with subject/body prefilled from the form, plus copy-to-clipboard for the composed message.",
+      "files": [
+        "frontend/src/components/connect/MessagingTerminalForm.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-34"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-enhance-the-home-page-experience-visual-strategy-to-include-a-parallax-scrolling-feel-and-a-subtle-moving-grid-pattern-background-syncing-infrastructure-layered-behind-the-existing-hero-content-while-preserving-the-headline-text-exactly-precision-automated-synchronized",
+      "featureTitle": "Enhance the Home page (“Experience”) visual strategy to include a parallax scrolling feel and a subtle moving grid pattern background (“Syncing Infrastructure”) layered behind the existing hero content, while preserving the headline text exactly: “PRECISION. AUTOMATED. SYNCHRONIZED.”",
+      "files": [
+        "frontend/src/components/landing/HeroSection.tsx",
+        "frontend/src/components/landing/SyncingInfrastructureBackground.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-35"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-the-mission-line-to-the-home-page-as-english-text-bridging-the-gap-between-legacy-school-systems-and-the-digital-future-of-ars-and-ensure-the-brand-voice-quote-by-nandhu-krishna-biju-is-present-in-english-on-the-home-page",
+      "featureTitle": "Add the “Mission” line to the Home page as English text: “Bridging the gap between legacy school systems and the digital future of ARS.” and ensure the Brand Voice quote by Nandhu Krishna Biju is present in English on the Home page.",
+      "files": [
+        "frontend/src/components/landing/WelcomeNarrativeSection.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-36"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-product-deep-dive-page-the-tt-1-ecosystem-to-present-the-component-breakdown-using-interactive-clickable-3d-style-cards-samsung-inspired-such-that-each-component-card-can-be-clicked-tapped-to-reveal-its-detailed-technical-role-text",
+      "featureTitle": "Update the Product Deep-Dive page (“The TT-1 Ecosystem”) to present the component breakdown using interactive, clickable 3D-style cards (Samsung-inspired) such that each component card can be clicked/tapped to reveal its detailed technical role text.",
+      "files": [
+        "frontend/src/components/product/Interactive3DComponentCard.tsx",
+        "frontend/src/index.css",
+        "frontend/src/pages/ProductDeepDivePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-37"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-leadership-page-content-to-match-the-leadership-mentorship-roster-and-descriptions-from-the-masterplan-including-adding-jeswin-miss-chief-institutional-mentor-and-ensuring-nandhu-krishna-biju-ad-handler-brand-strategist-uses-the-exact-name-spelling-keep-the-page-text-forward-with-no-photos-images-for-people",
+      "featureTitle": "Update the Leadership page content to match the “Leadership & Mentorship” roster and descriptions from the masterplan, including adding “Jeswin Miss | Chief Institutional Mentor” and ensuring “Nandhu Krishna Biju | Ad Handler & Brand Strategist” uses the exact name spelling. Keep the page text-forward with no photos/images for people.",
+      "files": [
+        "frontend/src/pages/BoardPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-38"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-global-footer-to-match-the-open-architecture-navigation-intent-and-status-indicators-include-footer-links-for-home-technical-data-achievements-and-terms-of-service-display-dual-status-indicators-in-english-system-status-operational-and-network-unrestricted-and-update-the-copyright-line-to-2026-tactic-transmit-all-designs-are-the-joint-intellectual-property-of-the-founders",
+      "featureTitle": "Update the global footer to match the Open Architecture navigation intent and status indicators: include footer links for Home, Technical Data, Achievements, and Terms of Service; display dual status indicators in English: “SYSTEM STATUS: ● OPERATIONAL” and “NETWORK: ● UNRESTRICTED”; and update the copyright line to: “© 2026 Tactic Transmit. All designs are the joint intellectual property of the Founders.”",
+      "files": [
+        "frontend/src/components/layout/Footer.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-39"
       ],
       "confidence": "high"
     }

@@ -5,11 +5,11 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   const appIdentifier = encodeURIComponent(window.location.hostname || 'tactic-transmit');
 
-  const publicNavItems = [
+  const primaryNavItems = [
     { label: 'Home', path: '/' },
-    { label: 'Product', path: '/product' },
-    { label: 'Board', path: '/board' },
-    { label: 'Connect', path: '/connect' },
+    { label: 'Technical Data', path: '/legal' },
+    { label: 'Achievements', path: '/achievements' },
+    { label: 'Terms of Service', path: '/terms' },
   ];
 
   return (
@@ -17,7 +17,7 @@ export default function Footer() {
       <div className="container mx-auto px-6 py-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-6">
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400">
-            {publicNavItems.map((item) => (
+            {primaryNavItems.map((item) => (
               <button
                 key={item.path}
                 onClick={() => navigate({ to: item.path })}
@@ -28,31 +28,25 @@ export default function Footer() {
             ))}
           </div>
 
-          <div className="flex items-center gap-2 text-sm">
-            <div className="status-indicator-green"></div>
-            <span className="text-green-400 font-semibold tracking-wide">SYSTEM: OPERATIONAL.</span>
+          <div className="flex flex-col sm:flex-row items-center gap-4 text-sm">
+            <div className="flex items-center gap-2">
+              <div className="status-indicator-green"></div>
+              <span className="text-green-400 font-semibold tracking-wide">SYSTEM STATUS: ● OPERATIONAL</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="status-indicator-green"></div>
+              <span className="text-green-400 font-semibold tracking-wide">NETWORK: ● UNRESTRICTED</span>
+            </div>
           </div>
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6 border-t border-white/10">
           <div className="flex items-center gap-6 text-sm text-gray-400">
             <button
-              onClick={() => navigate({ to: '/terms' })}
-              className="hover:text-neon-blue transition-colors"
-            >
-              Terms of Service
-            </button>
-            <button
               onClick={() => navigate({ to: '/privacy' })}
               className="hover:text-neon-blue transition-colors"
             >
-              Privacy Policy
-            </button>
-            <button
-              onClick={() => navigate({ to: '/legal' })}
-              className="hover:text-neon-blue transition-colors"
-            >
-              Legal Docs
+              Privacy
             </button>
           </div>
 
@@ -69,8 +63,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-6 text-center text-xs text-gray-500">
-          © {currentYear} TACTIC TRANSMIT. All rights reserved.
+        <div className="mt-6 text-center text-xs text-gray-400">
+          © {currentYear} Tactic Transmit. All designs are the joint intellectual property of the Founders.
         </div>
       </div>
     </footer>
